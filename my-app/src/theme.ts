@@ -1,8 +1,8 @@
 import React from "react";
-import { createTheme } from "@mui/material/styles";
+import {createTheme} from "@mui/material/styles";
 import {PaletteMode} from "@mui/material";
 
-export const tokens =(mode: any) => ({
+export const tokens = (mode: any) => ({
     ...(mode === 'dark' ? {
         grey: {
             100: "#e0e0e0",
@@ -126,21 +126,21 @@ export const themeSettings = (mode: any) => {
         palette: {
             mode: mode,
             ...(mode === 'dark'
-            ? {
-                primary: {
-                    main: colors.primary[500],
-                },
-                secondary: {
-                    main: colors.greenAccent[500],
-                },
-                neutral: {
-                    dark: colors.grey[700],
-                    main: colors.grey[500],
-                    light: colors.grey[100]
-                },
-                background: {
-                    default: colors.primary[500]
-                }
+                ? {
+                    primary: {
+                        main: colors.primary[500],
+                    },
+                    secondary: {
+                        main: colors.greenAccent[500],
+                    },
+                    neutral: {
+                        dark: colors.grey[700],
+                        main: colors.grey[500],
+                        light: colors.grey[100]
+                    },
+                    background: {
+                        default: colors.primary[500]
+                    }
                 } : {
                     primary: {
                         main: colors.primary[100],
@@ -190,11 +190,12 @@ export const themeSettings = (mode: any) => {
 };
 
 export const ColorModeContext = React.createContext({
-    toggleColorMode: ()  => {},
+    toggleColorMode: () => {
+    },
 });
 
 export const useMode = () => {
-    const [mode, setMode] = React.useState<'light' | 'dark'>('light');
+    const [mode, setMode] = React.useState<'light' | 'dark'>('dark');
 
     const colorMode = React.useMemo(
         () => ({
