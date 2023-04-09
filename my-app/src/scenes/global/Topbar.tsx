@@ -1,7 +1,7 @@
 import NightsStayIcon from '@mui/icons-material/NightsStay';
 import LightModeIcon from '@mui/icons-material/LightMode';
 import {Box, IconButton, useTheme} from "@mui/material";
-import {ColorModeContext, tokens} from "../../theme";
+import {ColorModeContext} from "../../theme";
 import {useContext} from "react";
 
 const Topbar = () => {
