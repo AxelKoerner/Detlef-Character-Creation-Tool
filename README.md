@@ -28,4 +28,4 @@ This is a University Project with the goal, to create a fully fledged out websit
 22) [ ] When User Wants to organize his saved Characters, he can create a new folder, when saving the character
 23) [ ] When User decides to level up the character, he can select a simple button, giving him access to higher level features
 24) [ ] When User wants to export the character, he can select print, to create a pdf of the Character Sheet
-25) [ ] When the User wants to change the color mode, he can click a button, and change between dark & normal mode
+25) [x] When the User wants to change the color mode, he can click a button, and change between dark & normal mode
