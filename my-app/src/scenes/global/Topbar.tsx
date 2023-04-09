@@ -6,12 +6,11 @@ import {useContext} from "react";
 
 const Topbar = () => {
     const theme = useTheme();
-    const colors = tokens(theme.palette.mode);
     const colorMode = useContext(ColorModeContext);
     return (<Box display="flex" justifyContent="center" p={2}>
 
         {/* ICONS */}
-        <Box display={"flex"}>
+        <Box display="flex">
             <IconButton onClick={colorMode.toggleColorMode}>
                 {theme.palette.mode === "dark" ? (
                     <NightsStayIcon/>
