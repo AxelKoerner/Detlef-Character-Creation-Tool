@@ -7,6 +7,7 @@ import {BrowserRouter, Route, Routes} from "react-router-dom";
 import Profile from "./scenes/profile";
 import Settings from "./scenes/settings";
 import Login from "./scenes/login";
+import Dashboards from "./scenes/dashboards";
 
 
 function App() {
@@ -20,7 +21,8 @@ function App() {
                         <Topbar/>
                         <BrowserRouter>
                             <Routes>
-                                <Route path="/login" element={<Login/>}/>
+                                <Route path="/dashboards" element={<Dashboards/>}/>
+                                <Route path="/" element={<Login/>}/>
                                 <Route path="/profile" element={<Profile/>}/>
                                 <Route path="/settings" element={<Settings/>}/>
                             </Routes>
