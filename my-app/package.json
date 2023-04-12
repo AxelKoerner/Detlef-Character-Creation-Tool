@@ -16,10 +16,12 @@
     "@types/react-dom": "^18.0.11",
     "mui": "^0.0.1",
     "react": "^18.2.0",
+    "react-auth-kit": "^2.11.0",
     "react-dom": "^18.2.0",
     "react-pro-sidebar": "^1.0.0",
     "react-router-dom": "^6.10.0",
     "react-scripts": "5.0.1",
+    "styled-components": "^5.3.9",
     "typescript": "^4.9.5",
     "web-vitals": "^2.1.4"
   },
