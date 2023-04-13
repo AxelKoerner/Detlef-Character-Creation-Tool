@@ -33,10 +33,10 @@ const Topbar = () => {
                     <LightModeIcon/>
                 )}
             </IconButton>
-            <IconButton>
+            <IconButton href={"/settings"}>
                 <SettingsIcon/>
             </IconButton>
-            <IconButton>
+            <IconButton href={"/profile"}>
                 <AccountBoxIcon/>
             </IconButton>
         </Box>

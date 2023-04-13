@@ -119,8 +119,20 @@ const Login = () => {
                                         <Button
                                             variant={"contained"}
                                             fullWidth
-                                            sx={{color: colors.grey[100], backgroundColor: colors.greenAccent[600]}}>
+                                            href={"/dashboards"}
+                                            sx={{color: colors.grey[100], backgroundColor: colors.blueAccent[600], ":hover": {
+                                            bgcolor: colors.greenAccent[400]}
+                                            }}>
                                             Sign In
+                                        </Button>
+                                    </Grid>
+
+                                    <Grid container justifyContent={"flex-start"}>
+                                        <Button
+                                            variant={"text"}
+                                            href={"/dashboards"}
+                                            sx={{color: colors.greenAccent[400]}}>
+                                            Not yet registered?
                                         </Button>
                                     </Grid>
 
