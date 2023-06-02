@@ -41,7 +41,7 @@ const Login = () => {
                         variant={"h1"}
                         fontWeight={"bold"}
                         sx={{
-                            fontSize: 75,
+                            fontSize: 60,
                             color: colors.grey[100],
                             m: "0 0 5px 0",
                             mt: "75px",
@@ -52,7 +52,7 @@ const Login = () => {
                     <Typography
                         variant={"h5"}
                         sx={{
-                            fontSize: 25,
+                            fontSize: 20,
                             color: colors.greenAccent[400],
                             mb: "50px"
                         }}>
@@ -130,7 +130,7 @@ const Login = () => {
                                     <Grid container justifyContent={"flex-start"}>
                                         <Button
                                             variant={"text"}
-                                            href={"/dashboards"}
+                                            href={"/createAccount"}
                                             sx={{color: colors.greenAccent[400]}}>
                                             Not yet registered?
                                         </Button>
