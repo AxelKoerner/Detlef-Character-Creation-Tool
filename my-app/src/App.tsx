@@ -8,6 +8,7 @@ import Profile from "./scenes/profile";
 import Settings from "./scenes/settings";
 import Login from "./scenes/login";
 import Dashboards from "./scenes/dashboards";
+import CreateAccount from "./scenes/createAccount";
 
 
 function App() {
@@ -25,6 +26,7 @@ function App() {
                                 <Route path="/" element={<Login/>}/>
                                 <Route path="/profile" element={<Profile/>}/>
                                 <Route path="/settings" element={<Settings/>}/>
+                                <Route path="/createAccount" element={<CreateAccount/>}/>
                             </Routes>
                         </BrowserRouter>
                     </main>
