@@ -9,6 +9,7 @@ import Settings from "./scenes/settings";
 import Login from "./scenes/login";
 import Dashboards from "./scenes/dashboards";
 import CreateAccount from "./scenes/createAccount";
+import SideBar from "./scenes/global/SideBar";
 
 
 function App() {
@@ -18,6 +19,7 @@ function App() {
             <ThemeProvider theme={theme}>
                 <CssBaseline/>
                 <div className="App">
+                    <SideBar/>
                     <main className="content">
                         <Topbar/>
                         <BrowserRouter>
