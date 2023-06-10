@@ -14,6 +14,7 @@ import {useState} from "react";
 import {tokens} from "../../theme";
 import VisibilityIcon from '@mui/icons-material/Visibility';
 import VisibilityOffIcon from '@mui/icons-material/VisibilityOff';
+import { Link } from "react-router-dom";
 
 const Login = () => {
     const theme = useTheme();
@@ -117,9 +118,10 @@ const Login = () => {
 
                                     <Grid>
                                         <Button
+                                            component={Link}
                                             variant={"contained"}
                                             fullWidth
-                                            href={"/dashboards"}
+                                            to={"/dashboards"}
                                             sx={{color: colors.grey[100], backgroundColor: colors.blueAccent[600], ":hover": {
                                             bgcolor: colors.greenAccent[400]}
                                             }}>
@@ -129,8 +131,9 @@ const Login = () => {
 
                                     <Grid container justifyContent={"flex-start"}>
                                         <Button
+                                            component={Link}
                                             variant={"text"}
-                                            href={"/createAccount"}
+                                            to={"/createAccount"}
                                             sx={{color: colors.greenAccent[400]}}>
                                             Not yet registered?
                                         </Button>
