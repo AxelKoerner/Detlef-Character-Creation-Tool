@@ -5,7 +5,7 @@ This is a University Project with the goal, to create a fully fledged out websit
 
 ## Planned User Stories (draft)
 1) [ ] When User wants to quickly Navigate, he can access the Sidebar, to have easy access to all features
-2) [ ] If the user wants to log in, he can use the login form, and gain access to our website and his data
+2) [x] If the user wants to log in, he can use the login form, and gain access to our website and his data
 3) [ ] If the user wants to log out, he can use the logout form, and logs out of his account
 4) [ ] If the user wants to edit his profile, he can navigate to his profile, and edit his user information
 5) [ ] if the user wants to upload pictures, he can click the upload button, and select an image from his pc to upload
@@ -29,4 +29,4 @@ This is a University Project with the goal, to create a fully fledged out websit
 23) [ ] When User decides to level up the character, he can select a simple button, giving him access to higher level features
 24) [ ] When User wants to export the character, he can select print, to create a pdf of the Character Sheet
 25) [x] When the User wants to change the color mode, he can click a button, and change between dark & normal mode
-26) [ ] When the User wants to input his information, the values are being checked
+26) [x] When the User wants to input his information, the values are being checked
