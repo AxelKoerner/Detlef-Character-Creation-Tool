@@ -14,6 +14,11 @@ import {useState} from "react";
 import {tokens} from "../../theme";
 import VisibilityIcon from '@mui/icons-material/Visibility';
 import VisibilityOffIcon from '@mui/icons-material/VisibilityOff';
+import {Link, useNavigate} from "react-router-dom";
+import { Formik } from "formik";
+import * as yup from "yup";
+import {initializeApp} from "firebase/app";
+import {getDatabase, ref, onValue} from "firebase/database";
 
 const Login = () => {
     const theme = useTheme();
@@ -22,12 +27,40 @@ const Login = () => {
         email: "",
         password: "",
         showPassword: false
-    })
+    });
+    const firebaseConfig = {
+        apiKey: "AIzaSyDjAlBgT7ybr2GZrNgq3zFZoKu1jn7stHg",
+        authDomain: "cctool-c001b.firebaseapp.com",
+        databaseURL: "https://cctool-c001b-default-rtdb.europe-west1.firebasedatabase.app",
+        projectId: "cctool-c001b",
+        storageBucket: "cctool-c001b.appspot.com",
+        messagingSenderId: "736945444931",
+        appId: "1:736945444931:web:07a06f34302f63b8929cf6"
+
+    };
+    const app = initializeApp(firebaseConfig);
+    const database = getDatabase(app);
+    const navigate = useNavigate();
 
     const handlePasswordVisibility = () => {
         setValues({
             ...value,
             showPassword: !value.showPassword
+        })
+    }
+
+    const checkLoginCredentials = (values: any, actions: any) => {
+        const dbData = ref(database, '/users/');
+        onValue(dbData, (snapshot) => {
+            const data = snapshot.val();
+            for(let key in data) {
+                let entry = data[key];
+                if(entry.email === values.email && entry.password === values.password) {
+                    navigate("/dashboards");
+                    return;
+                }
+            }
+            actions.setErrors({email: 'Invalid input', password: 'Invalid input'});
         })
     }
 
@@ -60,6 +93,15 @@ const Login = () => {
                     </Typography>
 
                     {/* INPUT FIELDS */}
+                    <Formik initialValues={initialValues} onSubmit={checkLoginCredentials} validationSchema={checkoutSchema}>
+                        {({
+                              values,
+                              errors,
+                              touched,
+                              handleChange,
+                              handleSubmit
+                          }) => (
+                            <form onSubmit={handleSubmit}>
                     <Container maxWidth={"lg"}>
                         <Grid
                             container
@@ -84,7 +126,12 @@ const Login = () => {
                                             placeholder={"Email Address"}
                                             variant={"outlined"}
                                             color={"secondary"}
-                                            sx={{mb: 2}}>
+                                            sx={{mb: 2}}
+                                            onChange={handleChange}
+                                            value={values.email}
+                                            name={'email'}
+                                            error={!!touched.email && !!errors.email}
+                                            helperText={touched.email && errors.email}>
                                         </TextField>
                                     </Grid>
 
@@ -97,6 +144,11 @@ const Login = () => {
                                             variant={"outlined"}
                                             color={"secondary"}
                                             sx={{mb: 2}}
+                                            onChange={handleChange}
+                                            value={values.password}
+                                            name={'password'}
+                                            error={!!touched.password && !!errors.password}
+                                            helperText={touched.password && errors.password}
                                             InputProps={{
                                                 endAdornment: (
                                                     <InputAdornment position={"end"}>
@@ -117,9 +169,9 @@ const Login = () => {
 
                                     <Grid>
                                         <Button
+                                            type={'submit'}
                                             variant={"contained"}
                                             fullWidth
-                                            href={"/dashboards"}
                                             sx={{color: colors.grey[100], backgroundColor: colors.blueAccent[600], ":hover": {
                                             bgcolor: colors.greenAccent[400]}
                                             }}>
@@ -129,8 +181,9 @@ const Login = () => {
 
                                     <Grid container justifyContent={"flex-start"}>
                                         <Button
+                                            component={Link}
                                             variant={"text"}
-                                            href={"/createAccount"}
+                                            to={"/createAccount"}
                                             sx={{color: colors.greenAccent[400]}}>
                                             Not yet registered?
                                         </Button>
@@ -140,10 +193,23 @@ const Login = () => {
                             </Paper>
                         </Grid>
                     </Container>
+                            </form>
+                        )}
+                    </Formik>
                 </Container>
             </Box>
         </Container>
     )
 }
+
+const initialValues = {
+    email: '',
+    password: ''
+}
+
+const checkoutSchema = yup.object().shape({
+    email: yup.string().email("invalid email").required("required"),
+    password: yup.string().required('required')
+});
 
 export default Login;

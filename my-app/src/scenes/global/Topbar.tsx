@@ -11,6 +11,8 @@ const Topbar = () => {
     const theme = useTheme();
     const colorMode = useContext(ColorModeContext);
     const colors = tokens(theme.palette.mode);
+
+    
     return (<Box display="flex" justifyContent="space-between" p={2}>
         {/* SEARCH BAR */}
         <Box sx={{
@@ -33,7 +35,8 @@ const Topbar = () => {
                     <LightModeIcon/>
                 )}
             </IconButton>
-            <IconButton href={"/settings"}>
+            <IconButton
+                href={"/settings"}>
                 <SettingsIcon/>
             </IconButton>
             <IconButton href={"/profile"}>
