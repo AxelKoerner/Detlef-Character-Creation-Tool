@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import './App.css';
 import {ColorModeContext, useMode} from "./theme";
 import {CssBaseline, ThemeProvider} from "@mui/material";
@@ -14,12 +14,14 @@ import SideBar from "./scenes/global/SideBar";
 
 function App() {
     const [theme, colorMode] = useMode();
+    const [isSidebar, setIsSidebar] = useState(true);
 
+    // @ts-ignore
     return (<ColorModeContext.Provider value={colorMode}>
             <ThemeProvider theme={theme}>
                 <CssBaseline/>
                 <div className="App">
-                    <SideBar/>
+                    <SideBar />
                     <main className="content">
                         <Topbar/>
                         <BrowserRouter>
