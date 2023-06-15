@@ -19,6 +19,7 @@ import { Formik } from "formik";
 import * as yup from "yup";
 import {initializeApp} from "firebase/app";
 import {getDatabase, ref, onValue} from "firebase/database";
+import  secureLocalStorage  from  "react-secure-storage";
 
 const Login = () => {
     const theme = useTheme();
@@ -56,6 +57,7 @@ const Login = () => {
             for(let key in data) {
                 let entry = data[key];
                 if(entry.email === values.email && entry.password === values.password) {
+                    secureLocalStorage.setItem("email", entry.email);
                     navigate("/dashboards");
                     return;
                 }
