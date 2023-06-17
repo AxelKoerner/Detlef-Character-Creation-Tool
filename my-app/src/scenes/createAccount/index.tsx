@@ -126,7 +126,6 @@ const CreateAccount = () => {
                                 </form>
                             )}
                         </Formik>
-
                     </Grid>
                 </Paper>
             </Box>
