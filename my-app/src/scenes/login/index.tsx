@@ -58,6 +58,7 @@ const Login = () => {
                 let entry = data[key];
                 if(entry.email === values.email && entry.password === values.password) {
                     secureLocalStorage.setItem("email", entry.email);
+                    secureLocalStorage.setItem("picture", entry.picture);
                     navigate("/dashboards");
                     return;
                 }
