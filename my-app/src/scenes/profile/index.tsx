@@ -6,11 +6,12 @@ import {initializeApp} from "firebase/app";
 import {getDatabase, onValue, ref, set} from "firebase/database";
 import {Formik} from "formik";
 import * as yup from "yup";
+import StockImage from '../../assets/stock_profile_image.jpg';
 
 const Profile = () => {
     const theme = useTheme();
     const colors = tokens(theme.palette.mode);
-    let profile_image = (secureLocalStorage.getItem('picture') !== 'undefined') ? secureLocalStorage.getItem('picture') : 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAHkAAAB5CAMAAAAqJH57AAAAb1BMVEXw7+s9PT3w7uw9PTvw7+k9PD/j4eDz8u46OjoxLzD18/Ln5uQ0NDQwMC87Pjvq6OdZWVf8+vmJiYfJyMc3OTaenpzc29kjJCFtbGq4t7XCwL+srKkrKilMS0phYF4bHBjT09B8e3qVlpIlJCYXFhPwZzvuAAADJElEQVRoge2aC7OiIBSABcyDCCm+SzBv7f//jYvm3sembl2l7uzwTc04k/l1AOEczMMYe57Xv59Nb/b9F4gH/BepXxXwq+J9XcSvNDscDofD4XA4HI4fCQC8wMoYjoIyiLA5eGbxzXCWtiQMQ9KmGWZP8wJr9InnFCG0z/OTbgCeE7bs9IUiQgjaob2BKt3JZxSGsqj6aD9Dq0baF0NRoVuqwvowh8OUGJHqYHmcQSnIlBkRUdpVs5pPihHiNbM5wCG7zIhNV2c2u5rV+aw5ry2aoezv4hkIKe2p4aDQvLk62DPLVOxmWxuJVFobY7KlC+a8tWhO6H62tRFNrJrnQ/5fzTVfaG3+Zs8MhVowq8Le/AmdWDCLzuKagZN81kwTe94+H1H7hca2+HgAR/s5MyWx1YdP0JxmzH1SYlHse/AWTorDN7CdfrKETzQ4T+yn3Bgn6jbi5AklDsY4VV8nUapS33SyXTeAKeDYMQk/EkEukiN4mAGz+XyTlfVZGjU+1uIP9dEUs1iea4tpL5jChl9qxvpDL2uKc9FkIPtWwLXiVSEtpUMQaGVSEl41wGCo22Go3YGxpuImN1Q6sLJmQKb4ddJWpCilHM1SlsVe7PvcE+Uqs7BQmoLKjOhh8iS5yHV6yLquyw6ppqH5YDekw/SyfXnFGmXKZWMmfXSEUKFCnvNQjdmoMe/M0U41G6uvmfbfiSdBt+m3Omza15CJ6y7BvyEi2zBqiJBJtO805yTe7uaSLb9t6ll4u9nWBTQhuiveEdVsFXSk7u3kscHVRqsHpOL+eAdEus0gi6sHWvpKFW8RNCum85/FoIsNgsZYLxVT01C9Qcys+/WwGKFTt354s/PMDtgi4rzejOt8tqyYh9brb6xYPzKJvJv16tENgfqOGakAVv4LC7rH7+aeqlttzr5pXr1WLu102jaf6DszlveB8HEmPa3ef4Uyads2SbTW/XJFOTcvzsOv8JDy4XcRc55OzFeSLTZBfVNKxSNRFATmNVCO75EoiszncYxH1ov7qdsfivJPV5u+7ucTNlqiffd/QYfD4XA4HA6Hw+Fw/AB+A6OeLQeMvs2PAAAAAElFTkSuQmCC'
+    let profile_image = (secureLocalStorage.getItem('picture') !== 'undefined') ? secureLocalStorage.getItem('picture') : StockImage
     const firebaseConfig = {
         apiKey: "AIzaSyDjAlBgT7ybr2GZrNgq3zFZoKu1jn7stHg",
         authDomain: "cctool-c001b.firebaseapp.com",
@@ -49,6 +50,10 @@ const Profile = () => {
                 let entry = data[key];
                 if(entry.email === mail) {
                     setName(entry.name); setEmail(entry.email); setPassword(entry.password); setPicture(entry.picture);
+                    if(entry.picture) {
+                        secureLocalStorage.setItem("picture", entry.picture);
+                        profile_image = entry.picture;
+                    }
                     return;
                 }
             }

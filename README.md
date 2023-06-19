@@ -6,9 +6,9 @@ This is a University Project with the goal, to create a fully fledged out websit
 ## Planned User Stories (draft)
 1) [ ] When User wants to quickly Navigate, he can access the Sidebar, to have easy access to all features
 2) [x] If the user wants to log in, he can use the login form, and gain access to our website and his data
-3) [ ] If the user wants to log out, he can use the logout form, and logs out of his account
-4) [ ] If the user wants to edit his profile, he can navigate to his profile, and edit his user information
-5) [ ] if the user wants to upload pictures, he can click the upload button, and select an image from his pc to upload
+3) [x] If the user wants to log out, he can use the logout form, and logs out of his account
+4) [x] If the user wants to edit his profile, he can navigate to his profile, and edit his user information
+5) [x] if the user wants to upload a profile picture, he can input a url and see his profile picture
 6) [ ] When the user is finished with creating his character, he can save it in his profile
 7) [ ] When the user wants to create his character , he can input basic information about it (for example name, sex etc.)
 8) [ ] When the user wants to define his character, he can input a description of his character
