@@ -2,6 +2,7 @@ import NightsStayIcon from '@mui/icons-material/NightsStay';
 import LightModeIcon from '@mui/icons-material/LightMode';
 import AccountBoxIcon from '@mui/icons-material/AccountBox';
 import SearchIcon from '@mui/icons-material/Search';
+import NewCharIcon from '@mui/icons-material/PlusOne'
 import {Box, Button, IconButton, InputBase, Paper, Popover, useTheme} from "@mui/material";
 import {ColorModeContext, tokens} from "../../theme";
 import React, {useContext} from "react";

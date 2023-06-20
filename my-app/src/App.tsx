@@ -9,6 +9,8 @@ import Settings from "./scenes/settings";
 import Login from "./scenes/login";
 import Dashboards from "./scenes/dashboards";
 import CreateAccount from "./scenes/createAccount";
+import DndCharacterSheet from './scenes/CharacterSheet/CharacterSheet';
+import CustomBackground from './scenes/Custom/CustomBackground';
 import SideBar from "./scenes/global/SideBar";
 
 
