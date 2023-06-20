@@ -9,6 +9,8 @@ import Settings from "./scenes/settings";
 import Login from "./scenes/login";
 import Dashboards from "./scenes/dashboards";
 import CreateAccount from "./scenes/createAccount";
+import DndCharacterSheet from './scenes/CharacterSheet/CharacterSheet';
+import CustomBackground from './scenes/Custom/CustomBackground';
 
 
 function App() {
@@ -28,6 +30,8 @@ function App() {
                                 <Route path="/profile" element={<Profile/>}/>
                                 <Route path="/settings" element={<Settings/>}/>
                                 <Route path="/createAccount" element={<CreateAccount/>}/>
+                                <Route path="/characterSheet" element={<DndCharacterSheet/>}/>
+                                <Route path="/customBackground" element={<CustomBackground/>}/>
                             </Routes>
 
                     </main>
