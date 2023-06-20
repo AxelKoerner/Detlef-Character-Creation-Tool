@@ -1,26 +1,65 @@
 import GridLayout from "react-grid-layout";
-import React from "react";
+import React, {useEffect} from "react";
 import 'react-grid-layout/css/styles.css';
 import 'react-resizable/css/styles.css';
 import {Box, Paper, Typography, useTheme} from "@mui/material";
 import {tokens} from "../../theme";
+import secureLocalStorage from "react-secure-storage";
+import StockImage from "../../assets/stock_profile_image.jpg";
+import {initializeApp} from "firebase/app";
+import {getDatabase, onValue, ref} from "firebase/database";
 
 function Dashboards() {
     const theme = useTheme();
     const colors = tokens(theme.palette.mode);
     const layout = [
-        {i: "a", x: 4, y: 0, w: 1, h: 6, minH: 6},
+        {i: "profile", x: 0, y: 0, w: 2.5, h: 12, minW: 2, minH: 12},
         {i: "b", x: 5, y: 0, w: 1, h: 3, minH: 3},
         {i: "c", x: 6, y: 0, w: 1, h: 3, minH: 3},
         {i: "d", x: 7, y: 0, w: 1, h: 3, minH: 3}
     ];
-    const profilePicture = require('../../assets/example_pic.jpg');
+    let profilePicture = (secureLocalStorage.getItem('picture') !== 'undefined') ? secureLocalStorage.getItem('picture') : StockImage
+    const firebaseConfig = {
+        apiKey: "AIzaSyDjAlBgT7ybr2GZrNgq3zFZoKu1jn7stHg",
+        authDomain: "cctool-c001b.firebaseapp.com",
+        databaseURL: "https://cctool-c001b-default-rtdb.europe-west1.firebasedatabase.app",
+        projectId: "cctool-c001b",
+        storageBucket: "cctool-c001b.appspot.com",
+        messagingSenderId: "736945444931",
+        appId: "1:736945444931:web:07a06f34302f63b8929cf6"
+
+    };
+    const app = initializeApp(firebaseConfig);
+    const database = getDatabase(app);
+
+    const [userName, setUserName] = React.useState("");
+    const [userMail, setUserMail] = React.useState("");
+
+    useEffect(() => {
+        const mail = secureLocalStorage.getItem("email");
+        const dbData = ref(database, 'users/');
+        onValue(dbData, (snapshot) => {
+            const data = snapshot.val();
+            for(let key in data) {
+                let entry = data[key];
+                if(entry.email === mail) {
+                    setUserMail(entry.email);
+                    setUserName(entry.name);
+                    return;
+                }
+            }
+        })
+    }, []   )
+
+    // ...
+
+// ...
 
     return (
         <>
             <Typography variant={"h1"}>DASHBOARDS</Typography>
-            <GridLayout className="layout" cols={12} rowHeight={30} width={1800} layout={layout}>
-                <div key="a">
+            <GridLayout className="layout" cols={12} rowHeight={30} width={2050} layout={layout}>
+                <div key="profile">
                     <Paper
                         elevation={4}
                         sx={{
@@ -28,23 +67,63 @@ function Dashboards() {
                             background: colors.primary[400],
                             width: "inherit",
                             height: "inherit"
-                        }}>
-                        <Box mb="25px">
-                            <Box display={"flex"} justifyContent={"center"} alignItems={"center"}>
+                        }}
+                    >
+                        <Box
+                            mb="25px"
+                            display="flex"
+                            flexDirection="column"
+                            justifyContent="center"
+                            alignItems="center"
+                            sx={{ height: "100%" }}
+                        >
+                            <Box
+                                style={{
+                                    flex: "1 1 100%",
+                                    display: "flex",
+                                    justifyContent: "center",
+                                    alignItems: "center",
+                                    maxWidth: "100%", // Add this line
+                                    maxHeight: "100%" // Add this line
+                                }}
+                            >
                                 <img
-                                    alt={"profile-user"}
-                                    width={"100%"}
-                                    height={"100%"}
-                                    src={profilePicture}
-                                    style={{cursor: "pointer", borderRadius: "50%"}}/>
-
+                                    alt="profile-user"
+                                    src={profilePicture?.toString()}
+                                    style={{
+                                        cursor: "pointer",
+                                        borderRadius: "50%",
+                                        width: "100%",
+                                        height: "100%",
+                                        objectFit: "cover"
+                                    }}
+                                />
                             </Box>
-
-                            <Box textAlign={"center"}>
-                                <Typography variant={"h2"} color={colors.grey[100]} fontWeight={"bold"}
-                                            sx={{m: "10px 0 0 0"}}>Test
-                                    Name</Typography>
-                                <Typography> Test User</Typography>
+                            <Box
+                                textAlign="center"
+                                sx={{ flex: "0 0 auto", width: "100%", px: 2, mt: 3 }}
+                            >
+                                <Typography
+                                    variant="h2"
+                                    color={colors.grey[100]}
+                                    fontWeight="bold"
+                                    sx={{
+                                        m: "10px 0 0 0",
+                                        overflowWrap: "break-word",
+                                        wordBreak: "break-word"
+                                    }}
+                                >
+                                    {userName}
+                                </Typography>
+                                <Typography
+                                    sx={{
+                                        overflowWrap: "break-word",
+                                        wordBreak: "break-word",
+                                        mt: 1
+                                    }}
+                                >
+                                    {userMail}
+                                </Typography>
                             </Box>
                         </Box>
                     </Paper>
@@ -83,7 +162,8 @@ function Dashboards() {
                     </Paper>
                 </div>
             </GridLayout></>
-    )
+)
+
 }
 
 export default Dashboards;

@@ -20,9 +20,10 @@ function App() {
             <ThemeProvider theme={theme}>
                 <CssBaseline/>
                 <div className="App">
+                    <BrowserRouter>
                     <main className="content">
                         <Topbar/>
-                        <BrowserRouter>
+
                             <Routes>
                                 <Route path="/dashboards" element={<Dashboards/>}/>
                                 <Route path="/" element={<Login/>}/>
@@ -32,8 +33,9 @@ function App() {
                                 <Route path="/characterSheet" element={<DndCharacterSheet/>}/>
                                 <Route path="/customBackground" element={<CustomBackground/>}/>
                             </Routes>
-                        </BrowserRouter>
+
                     </main>
+                    </BrowserRouter>
                 </div>
             </ThemeProvider>
         </ColorModeContext.Provider>
