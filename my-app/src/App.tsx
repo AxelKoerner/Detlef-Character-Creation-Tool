@@ -22,9 +22,10 @@ function App() {
                 <CssBaseline/>
                 <div className="App">
                     <SideBar />
+                    <BrowserRouter>
                     <main className="content">
                         <Topbar/>
-                        <BrowserRouter>
+
                             <Routes>
                                 <Route path="/dashboards" element={<Dashboards/>}/>
                                 <Route path="/" element={<Login/>}/>
@@ -32,8 +33,9 @@ function App() {
                                 <Route path="/settings" element={<Settings/>}/>
                                 <Route path="/createAccount" element={<CreateAccount/>}/>
                             </Routes>
-                        </BrowserRouter>
+
                     </main>
+                    </BrowserRouter>
                 </div>
             </ThemeProvider>
         </ColorModeContext.Provider>
