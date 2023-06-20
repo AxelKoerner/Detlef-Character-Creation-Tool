@@ -33,6 +33,8 @@ function App() {
                                 <Route path="/profile" element={<Profile/>}/>
                                 <Route path="/settings" element={<Settings/>}/>
                                 <Route path="/createAccount" element={<CreateAccount/>}/>
+                                <Route path="/characterSheet" element={<DndCharacterSheet/>}/>
+                                <Route path="/customBackground" element={<CustomBackground/>}/>
                             </Routes>
 
                     </main>
