@@ -3,6 +3,7 @@ import LightModeIcon from '@mui/icons-material/LightMode';
 import AccountBoxIcon from '@mui/icons-material/AccountBox';
 import SettingsIcon from '@mui/icons-material/Settings';
 import SearchIcon from '@mui/icons-material/Search';
+import NewCharIcon from '@mui/icons-material/PlusOne'
 import {Box, IconButton, InputBase, useTheme} from "@mui/material";
 import {ColorModeContext, tokens} from "../../theme";
 import {useContext} from "react";
@@ -38,6 +39,10 @@ const Topbar = () => {
             <IconButton
                 href={"/settings"}>
                 <SettingsIcon/>
+            </IconButton>
+            <IconButton
+                href={"/characterSheet"}>
+                <NewCharIcon/>
             </IconButton>
             <IconButton href={"/profile"}>
                 <AccountBoxIcon/>
