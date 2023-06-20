@@ -11,16 +11,19 @@ import Dashboards from "./scenes/dashboards";
 import CreateAccount from "./scenes/createAccount";
 import DndCharacterSheet from './scenes/CharacterSheet/CharacterSheet';
 import CustomBackground from './scenes/Custom/CustomBackground';
+import SideBar from "./scenes/global/SideBar";
 
 
 function App() {
     const [theme, colorMode] = useMode();
 
+    // @ts-ignore
     return (<ColorModeContext.Provider value={colorMode}>
             <ThemeProvider theme={theme}>
                 <CssBaseline/>
-                <div className="App">
+                <div className="app">
                     <BrowserRouter>
+                        <SideBar />
                     <main className="content">
                         <Topbar/>
 
@@ -30,8 +33,6 @@ function App() {
                                 <Route path="/profile" element={<Profile/>}/>
                                 <Route path="/settings" element={<Settings/>}/>
                                 <Route path="/createAccount" element={<CreateAccount/>}/>
-                                <Route path="/characterSheet" element={<DndCharacterSheet/>}/>
-                                <Route path="/customBackground" element={<CustomBackground/>}/>
                             </Routes>
 
                     </main>

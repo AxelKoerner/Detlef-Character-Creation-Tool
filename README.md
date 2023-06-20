@@ -4,7 +4,8 @@ Detlef-Character-Creation-Tool
 This is a University Project with the goal, to create a fully fledged out website with a list of different goals. The project is a character creation tool for pen & paper games, specific for Dungeons & Dragons.
 
 ## Planned User Stories (draft)
-1) [ ] When User wants to quickly Navigate, he can access the Sidebar, to have easy access to all features
+1) [x] When User wants to quickly Navigate, he can access the Sidebar, to have easy access to all features
+2) [x] When the user opens the Sidebar, he wants to see his profile information
 2) [x] If the user wants to log in, he can use the login form, and gain access to our website and his data
 3) [x] If the user wants to log out, he can use the logout form, and logs out of his account
 4) [x] If the user wants to edit his profile, he can navigate to his profile, and edit his user information
