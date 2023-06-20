@@ -13,10 +13,10 @@ function Dashboards() {
     const theme = useTheme();
     const colors = tokens(theme.palette.mode);
     const layout = [
-        {i: "profile", x: 0, y: 0, w: 2.5, h: 12, minW: 2, minH: 12},
-        {i: "b", x: 5, y: 0, w: 1, h: 3, minH: 3},
-        {i: "c", x: 6, y: 0, w: 1, h: 3, minH: 3},
-        {i: "d", x: 7, y: 0, w: 1, h: 3, minH: 3}
+        {i: "profile", x: 3, y: 0, w: 3, h: 12, minW: 3, minH: 12},
+        {i: "b", x: 3, y: 0, w: 3, h: 8, minW: 3, minH: 12},
+        {i: "c", x: 6, y: 0, w: 3, h: 8, minW: 3, minH: 12},
+        {i: "d", x: 9, y: 0, w: 3, h: 8, minW: 3, minH: 12}
     ];
     let profilePicture = (secureLocalStorage.getItem('picture') !== 'undefined') ? secureLocalStorage.getItem('picture') : StockImage
     const firebaseConfig = {
