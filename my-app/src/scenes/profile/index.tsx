@@ -2,28 +2,16 @@ import React, {useEffect} from "react";
 import {Button, Container, Grid, Paper, TextField, Typography, useTheme} from "@mui/material";
 import {tokens} from "../../theme";
 import secureLocalStorage from "react-secure-storage";
-import {initializeApp} from "firebase/app";
-import {getDatabase, onValue, ref, set} from "firebase/database";
+import { onValue, ref, set} from "firebase/database";
 import {Formik} from "formik";
 import * as yup from "yup";
 import StockImage from '../../assets/stock_profile_image.jpg';
+import database from '../../config/config';
 
 const Profile = () => {
     const theme = useTheme();
     const colors = tokens(theme.palette.mode);
     let profile_image = (secureLocalStorage.getItem('picture') !== 'undefined') ? secureLocalStorage.getItem('picture') : StockImage
-    const firebaseConfig = {
-        apiKey: "AIzaSyDjAlBgT7ybr2GZrNgq3zFZoKu1jn7stHg",
-        authDomain: "cctool-c001b.firebaseapp.com",
-        databaseURL: "https://cctool-c001b-default-rtdb.europe-west1.firebasedatabase.app",
-        projectId: "cctool-c001b",
-        storageBucket: "cctool-c001b.appspot.com",
-        messagingSenderId: "736945444931",
-        appId: "1:736945444931:web:07a06f34302f63b8929cf6"
-
-    };
-    const app = initializeApp(firebaseConfig);
-    const database = getDatabase(app);
 
     const handleFormSubmit = () => {
         set(ref(database, 'users/' + name), {

@@ -17,8 +17,8 @@ import VisibilityOffIcon from '@mui/icons-material/VisibilityOff';
 import {Link, useNavigate} from "react-router-dom";
 import { Formik } from "formik";
 import * as yup from "yup";
-import {initializeApp} from "firebase/app";
-import {getDatabase, ref, onValue} from "firebase/database";
+import database from '../../config/config';
+import { ref, onValue} from "firebase/database";
 import  secureLocalStorage  from  "react-secure-storage";
 
 const Login = () => {
@@ -29,18 +29,6 @@ const Login = () => {
         password: "",
         showPassword: false
     });
-    const firebaseConfig = {
-        apiKey: "AIzaSyDjAlBgT7ybr2GZrNgq3zFZoKu1jn7stHg",
-        authDomain: "cctool-c001b.firebaseapp.com",
-        databaseURL: "https://cctool-c001b-default-rtdb.europe-west1.firebasedatabase.app",
-        projectId: "cctool-c001b",
-        storageBucket: "cctool-c001b.appspot.com",
-        messagingSenderId: "736945444931",
-        appId: "1:736945444931:web:07a06f34302f63b8929cf6"
-
-    };
-    const app = initializeApp(firebaseConfig);
-    const database = getDatabase(app);
     const navigate = useNavigate();
 
     const handlePasswordVisibility = () => {

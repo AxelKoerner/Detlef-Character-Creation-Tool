@@ -11,9 +11,9 @@ import secureLocalStorage from "react-secure-storage";
 import Face5Icon from '@mui/icons-material/Face5';
 import WallpaperIcon from '@mui/icons-material/Wallpaper';
 import StockImage from "../../assets/stock_profile_image.jpg";
-import {initializeApp} from "firebase/app";
-import {getDatabase, onValue, ref} from "firebase/database";
+import {onValue, ref} from "firebase/database";
 import {Link} from "react-router-dom";
+import database from '../../config/config';
 
 const Item = ({ title, to, icon, selected, setSelected }: {title: string; to: string; icon: any; selected: any; setSelected: any}) => {
     const theme = useTheme();
@@ -41,19 +41,7 @@ const SideBar = () => {
     const colors = tokens(theme.palette.mode);
     const [isCollapsed, setIsCollapsed] = useState(false);
     const [selected, setSelected] = useState("Dashboard");
-    let profilePicture = (secureLocalStorage.getItem('picture') !== null) ? secureLocalStorage.getItem('picture') : StockImage
-    const firebaseConfig = {
-        apiKey: "AIzaSyDjAlBgT7ybr2GZrNgq3zFZoKu1jn7stHg",
-        authDomain: "cctool-c001b.firebaseapp.com",
-        databaseURL: "https://cctool-c001b-default-rtdb.europe-west1.firebasedatabase.app",
-        projectId: "cctool-c001b",
-        storageBucket: "cctool-c001b.appspot.com",
-        messagingSenderId: "736945444931",
-        appId: "1:736945444931:web:07a06f34302f63b8929cf6"
-
-    };
-    const app = initializeApp(firebaseConfig);
-    const database = getDatabase(app);
+    let profilePicture = (secureLocalStorage.getItem('picture') !== null) ? secureLocalStorage.getItem('picture') : StockImage;
     const [userName, setUserName] = React.useState("");
     const [userMail, setUserMail] = React.useState("");
 
