@@ -60,6 +60,7 @@ const Login = () => {
                     secureLocalStorage.setItem("email", entry.email);
                     secureLocalStorage.setItem("picture", entry.picture);
                     navigate("/dashboards");
+                    window.location.reload();
                     return;
                 }
             }
