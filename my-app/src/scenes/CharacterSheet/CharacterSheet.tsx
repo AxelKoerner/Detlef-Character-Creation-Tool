@@ -6,6 +6,7 @@ import { initializeApp } from "firebase/app";
 import { getAuth, onAuthStateChanged, User } from 'firebase/auth';
 import { boolean } from 'yup';
 import secureLocalStorage from 'react-secure-storage';
+import d20_Image from '../../assets/D20Icon.jpg'
 
 
 const firebaseConfig = {
@@ -37,7 +38,7 @@ const DndCharacterSheet: React.FC = () => {
     const userMail = (secureLocalStorage.getItem('email') !==  null) ? secureLocalStorage.getItem('email') : 'none';
     const [userName, setName] = useState<string[]>([]);
 
-    const [values, setValues] = useState/*<{ name: string; value: number }[]>*/([
+    const [values, setValues] = useState([
         { name: "Strenght", value: 8 , checked1: false , checked2: false, disabled1: false, disabled2:false},
         { name: "Dexterity", value: 8 , checked1: false, checked2: false, disabled1: false, disabled2:false},
         { name: "Constitution", value: 8 , checked1: false, checked2: false, disabled1: false, disabled2:false},
@@ -117,7 +118,7 @@ const DndCharacterSheet: React.FC = () => {
         setSelectedLineage(selectedLineage);
 
      
-        // Fetch abilities data for the selected lineage from the database
+        
         const dbRef = ref(getDatabase());
         const abilitiesSnapshot = await get(child(dbRef, `Lineage/${selectedLineage}/Abilities`));
         if (abilitiesSnapshot.exists()) {
@@ -168,7 +169,7 @@ const DndCharacterSheet: React.FC = () => {
         const selectedBackground=event.target.value;
         setSelectedBackground(event.target.value);
 
-        //Fetch Feature data from database
+        
         const dbRef = ref(getDatabase());
         const abilitiesSnapshot = await get(child(dbRef, `Background/${selectedBackground}/Abilities`));
         if (abilitiesSnapshot.exists()) {
@@ -202,22 +203,7 @@ const DndCharacterSheet: React.FC = () => {
 
         const lvlNumber = parseInt(selectedLevel.substring(4), 10);
         const dbRef = ref(getDatabase());
-        /*
-          //works
-           for (let level = 1; level <= lvlNumber; level++) {
-            let lvlTxt = "Lvl_";
-            if(level<10){ lvlTxt = "Lvl_0";}
-
-            const abilitiesSnapshot = await get(child(dbRef, `Class/${selectedClass}/${lvlTxt}${level}`));
-            if (abilitiesSnapshot.exists()) {
-              const abilitiesData = abilitiesSnapshot.val();
-              setAbilities((prevAbilities) => ({
-                ...prevAbilities,
-                ...abilitiesData,
-              }));
-            }
-          }
-          */
+       
 
           for (let level = 1; level <= lvlNumber; level++) {
             let lvlTxt = level < 10 ? `Lvl_0${level}` : `Lvl_${level}`;
@@ -344,9 +330,9 @@ const DndCharacterSheet: React.FC = () => {
 
 
       const handleSave = () => {
-        //const userId = 'YOUR_USER_ID'; // Replace with the actual user ID
+        
         const characterIdInput = document.getElementById("characterID") as HTMLInputElement;
-        const characterId = characterIdInput.value; // Retrieve the input value as characterId
+        const characterId = characterIdInput.value;
       
 
             const userId = userName;
@@ -384,286 +370,279 @@ const DndCharacterSheet: React.FC = () => {
       };
   
     return (
-      <div>
-        <h1>Character Sheet</h1>
         <div>
-          <h2>Personal Information</h2>
-          <label>
-            Name:
-            <input type="text" id="characterID" />
-          </label>
-          <label>
-            Lineage:
-            <select value={selectedLineage} onChange={handleLineageChange}>
-              <option value="">Select Lineage</option>
-              {lineages.map((lineageKey) => (
-                <option key={lineageKey} value={lineageKey}>
-                  {lineageKey}
-                </option>
-              ))}
-            </select>
-          </label>
-          <label>
-            Class:
-            <select value={selectedClass} onChange={handleClassChange}>
-              <option value="">Select Class</option>
-              {classes.map((classKey) => (
-                <option key={classKey} value={classKey}>
-                  {classKey}
-                </option>
-              ))}
-            </select>
-          </label>
-          <label>
-            Background:
-            <select value={selectedBackground} onChange={handleBackgroundChange}>
-              <option value="">Select Background</option>
-              {backgrounds.map((backgroundKey) => (
-                <option key={backgroundKey} value={backgroundKey}>
-                  {backgroundKey}
-                </option>
-              ))}
-            </select>
-          </label>
-          <label>
-          Level:
-          <select value={selectedLevel} onChange={handleLevelChange}>
-            <option value="Lvl_01">Lvl_01</option>
-            <option value="Lvl_02">Lvl_02</option>
-            <option value="Lvl_03">Lvl_03</option>
-            <option value="Lvl_04">Lvl_04</option>
-            <option value="Lvl_05">Lvl_05</option>
-            <option value="Lvl_06">Lvl_06</option>
-            <option value="Lvl_07">Lvl_07</option>
-            <option value="Lvl_08">Lvl_08</option>
-            <option value="Lvl_09">Lvl_09</option>
-            <option value="Lvl_10">Lvl_10</option>
-            <option value="Lvl_11">Lvl_11</option>
-            <option value="Lvl_12">Lvl_12</option>
-            <option value="Lvl_13">Lvl_13</option>
-            <option value="Lvl_14">Lvl_14</option>
-            <option value="Lvl_15">Lvl_15</option>
-            <option value="Lvl_16">Lvl_16</option>
-            <option value="Lvl_17">Lvl_17</option>
-            <option value="Lvl_18">Lvl_18</option>
-            <option value="Lvl_19">Lvl_19</option>
-            <option value="Lvl_20">Lvl_20</option>
-          </select>
-        </label>
-        </div>
-        {/*
-        <div >
-            <h2>Ability Scores</h2>
-            <table style={{display: "flex", justifyContent: "center"}}>
-                <tbody>
-                    <tr>
-                    {values.map((value, index) => (
-                        <td key={index}>
-                            <button onClick={() => increaseValue(index)}>+</button>
-                            <br/>
-                            {value.name}
-                        </td>
-                    ))}
-                    </tr>
-                    <tr>
-                    {values.map((value, index) => (
-                        <td key={index}>{value.value}</td>
-                    ))}
-                    </tr>
-                    <tr>
-                    {values.map((value, index) => (
-                        <td key={index}>
-                            <button onClick={() => decreaseValue(index)}>-</button>
-                        </td>
-                    ))}
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-                    */}
-
-<div>
-      <h2>Ability Scores</h2>
-      <table style={{ display: "flex", justifyContent: "center" }}>
+        <h1>New Character</h1>
+        <table style={{ borderCollapse: 'collapse', display: "flex", justifyContent: "center"}}>
         <tbody>
           <tr>
-            {values.map((value, index) => (
-              <td key={index}>
-                <button onClick={() => increaseValue(index)}>+</button>
-                <br />
-                {value.name}
-              </td>
-            ))}
+            <td colSpan={4} style={{ border: '1px solid white' }}>
+             
+                <button onClick={handleSave}>Save</button>
+      
+            </td>
           </tr>
           <tr>
-            {values.map((value, index) => (
-              <td key={index}>{value.value}</td>
-            ))}
+            <th style={{ border: '1px solid white' }}>
+            <img
+                            id={"class_image"}
+                            width="200px"
+                            height="200px"
+                            src={ d20_Image}
+                            style={{ cursor: "pointer", borderRadius: "0%" }}
+                        />
+            </th>
+            <td colSpan={3} style={{ border: '1px solid white' }}>
+                <div>
+                    <h2>Ability Scores</h2>
+                    <table style={{ display: "flex", justifyContent: "center" }}>
+                        <tbody>
+                        <tr>
+                            {values.map((value, index) => (
+                            <td key={index}>
+                                <button onClick={() => increaseValue(index)}>+</button>
+                                <br />
+                                {value.name}
+                            </td>
+                            ))}
+                        </tr>
+                        <tr>
+                            {values.map((value, index) => (
+                            <td key={index}>{value.value}</td>
+                            ))}
+                        </tr>
+                        <tr>
+                            {values.map((value, index) => (
+                            <td key={index}>
+                                <button onClick={() => decreaseValue(index)}>-</button>
+                            </td>
+                            ))}
+                        </tr>
+                        <tr>
+                            {values.map((value, columnIndex) => (
+                            <td key={columnIndex}>
+                                <label>
+                                <input
+                                    type="checkbox"
+                                    checked={value.checked1}
+                                    onChange={() =>
+                                    handleCheckboxChange(0, columnIndex, "checkbox1")
+                                    }
+                                    disabled={value.checked2}
+                                />
+                                +1
+                                </label>
+                            </td>
+                            ))}
+                        </tr>
+                        <tr>
+                            {values.map((value, columnIndex) => (
+                            <td key={columnIndex}>
+                                <label>
+                                <input
+                                    type="checkbox"
+                                    checked={value.checked2}
+                                    onChange={() =>
+                                    handleCheckboxChange(1, columnIndex, "checkbox2")
+                                    }
+                                    disabled={value.checked1}
+                                />
+                                +2
+                                </label>
+                            </td>
+                            ))}
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </td>
           </tr>
           <tr>
-            {values.map((value, index) => (
-              <td key={index}>
-                <button onClick={() => decreaseValue(index)}>-</button>
-              </td>
-            ))}
+            <th style={{ border: '1px solid white' }}>
+                <table>
+                    <tr>
+                        <td>Name:</td>
+                        <td>
+                            <label>
+                                <input type="text" id="characterID" />
+                            </label>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Class:</td>
+                        <td>
+                            <label>
+                    
+                                <select value={selectedClass} onChange={handleClassChange}>
+                                    <option value="">Select Class</option>
+                                        {classes.map((classKey) => (
+                                    <option key={classKey} value={classKey}>
+                                    {classKey}
+                                    </option>
+                                         ))}
+                                </select>
+                            </label>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td> Level:</td>
+                        <td>
+                            <label>
+                                <select value={selectedLevel} onChange={handleLevelChange}>
+                                    <option value="Lvl_01">Lvl_01</option>
+                                    <option value="Lvl_02">Lvl_02</option>
+                                    <option value="Lvl_03">Lvl_03</option>
+                                    <option value="Lvl_04">Lvl_04</option>
+                                    <option value="Lvl_05">Lvl_05</option>
+                                    <option value="Lvl_06">Lvl_06</option>
+                                    <option value="Lvl_07">Lvl_07</option>
+                                    <option value="Lvl_08">Lvl_08</option>
+                                    <option value="Lvl_09">Lvl_09</option>
+                                    <option value="Lvl_10">Lvl_10</option>
+                                    <option value="Lvl_11">Lvl_11</option>
+                                    <option value="Lvl_12">Lvl_12</option>
+                                    <option value="Lvl_13">Lvl_13</option>
+                                    <option value="Lvl_14">Lvl_14</option>
+                                    <option value="Lvl_15">Lvl_15</option>
+                                    <option value="Lvl_16">Lvl_16</option>
+                                    <option value="Lvl_17">Lvl_17</option>
+                                    <option value="Lvl_18">Lvl_18</option>
+                                    <option value="Lvl_19">Lvl_19</option>
+                                    <option value="Lvl_20">Lvl_20</option>
+                                </select>
+                            </label>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td> Lineage:</td>
+                        <td>
+                            <label>
+                                <select value={selectedLineage} onChange={handleLineageChange}>
+                                <option value="">Select Lineage</option>
+                                {lineages.map((lineageKey) => (
+                                    <option key={lineageKey} value={lineageKey}>
+                                    {lineageKey}
+                                    </option>
+                                ))}
+                                </select>
+                            </label>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Background:</td>
+                        <td>
+                            <label>
+                                <select value={selectedBackground} onChange={handleBackgroundChange}>
+                                <option value="">Select Background</option>
+                                {backgrounds.map((backgroundKey) => (
+                                    <option key={backgroundKey} value={backgroundKey}>
+                                    {backgroundKey}
+                                    </option>
+                                ))}
+                                </select>
+                            </label>
+                        </td>
+                    </tr>
+                </table>
+                
+              
+
+
+            </th>
+            <th colSpan={3} style={{ border: '1px solid white' }}>
+                <div>
+                    <h2>Skills</h2>
+                    <div style={{ display: 'flex' ,justifyContent: "center"}}>
+                        {Object.entries(groupedData).map(([ability, items]) => (
+                        <table key={ability} style={{ marginRight: '20px' }}>
+                            <caption>{ability}</caption>
+                            <tbody>
+                            {items.map((item) => (
+                                <tr key={item.id}>
+                                <td>{item.name}</td>
+                                <td>
+                                    <input
+                                    type="checkbox"
+                                    id={`checkbox-${item.name}`}
+                                    checked={checkedItems.includes(item.name)}
+                                    onChange={() => handleSkillCheckboxChange(item.name)}
+                                    disabled={checkedItems.length >= 5 && !checkedItems.includes(item.name)}
+                                    />
+                                    <label htmlFor={`checkbox-${item.name}`}></label>
+                                </td>
+                                </tr>
+                            ))}
+                            </tbody>
+                        </table>
+                        ))}
+                    </div>
+                </div>
+            <br/>
+            </th>
           </tr>
           <tr>
-            {values.map((value, columnIndex) => (
-              <td key={columnIndex}>
-                <label>
-                  <input
-                    type="checkbox"
-                    checked={value.checked1}
-                    onChange={() =>
-                      handleCheckboxChange(0, columnIndex, "checkbox1")
-                    }
-                    disabled={value.checked2}
-                  />
-                  +1
-                </label>
-              </td>
-            ))}
-          </tr>
-          <tr>
-            {values.map((value, columnIndex) => (
-              <td key={columnIndex}>
-                <label>
-                  <input
-                    type="checkbox"
-                    checked={value.checked2}
-                    onChange={() =>
-                      handleCheckboxChange(1, columnIndex, "checkbox2")
-                    }
-                    disabled={value.checked1}
-                  />
-                  +2
-                </label>
-              </td>
-            ))}
+            <td style={{ border: '1px solid white', verticalAlign: 'top' }}>
+            
+                <h2>Proficiencies</h2>
+                <table style={{display: "flex", justifyContent: "center"}}>
+                    <tbody>
+                    {Object.entries(proficiencies).map(([proficiency, description]) => (
+                        <tr key={proficiency}>
+                        <td>
+                            <strong>{proficiency}: </strong>
+                        </td>
+                        <td>
+                            {Array.isArray(description) ? (
+                            <ul>
+                                {description.map((item, index) => (
+                                <li key={index}>{item}</li>
+                                ))}
+                            </ul>
+                            ) : (
+                            <span>{description}</span>
+                            )}
+                        </td>
+                        </tr>
+                    ))}
+                    </tbody>
+                </table>
+            
+            </td>
+            <td colSpan={2} style={{ border: '1px solid white' , maxWidth: '600px'}}>
+            
+                
+                <h2>Abilities</h2>
+                <div style={{ height: '600px', overflow: 'auto' }}>
+                    <table>    
+                        <tbody>
+                            {Object.entries(abilities).map(([ability, description]) => (
+                            <tr key={ability}>
+                                <td>{ability}</td>
+                                <td>{description}</td>
+                            </tr>
+                            ))}
+                        </tbody>
+                    </table>
+          
+                </div>
+            </td>
+            <td style={{ border: '1px solid white' , verticalAlign: 'top'}}>
+                <div >
+                    <h2>Equipment</h2>
+                    <table style={{display: "flex", justifyContent: "center"}}>    
+                        <tbody>
+                            {Object.entries(equipment).map(([equipment, description]) => (
+                                <tr key={equipment}>
+                                    <td>{description}</td>
+                                </tr>
+                            ))}
+                        </tbody>
+                    </table>
+                </div>  
+            </td>
           </tr>
         </tbody>
       </table>
     </div>
-
-        <div>
-      <h2>Skills</h2>
-      <div style={{ display: 'flex' ,justifyContent: "center"}}>
-        {Object.entries(groupedData).map(([ability, items]) => (
-          <table key={ability} style={{ marginRight: '20px' }}>
-            <caption>{ability}</caption>
-            <tbody>
-              {items.map((item) => (
-                <tr key={item.id}>
-                  <td>{item.name}</td>
-                  <td>
-                    <input
-                      type="checkbox"
-                      id={`checkbox-${item.name}`}
-                      checked={checkedItems.includes(item.name)}
-                      onChange={() => handleSkillCheckboxChange(item.name)}
-                      disabled={checkedItems.length >= 5 && !checkedItems.includes(item.name)}
-                    />
-                    <label htmlFor={`checkbox-${item.name}`}></label>
-                  </td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        ))}
-      </div>
-    </div>
-  
-        <div>
-          <h2>Abilities</h2>
-           
-          <table>    
-            <tbody>
-                {Object.entries(abilities).map(([ability, description]) => (
-                    <tr key={ability}>
-                        <td>{ability}</td>
-                        <td>{description}</td>
-                    </tr>
-                ))}
-            </tbody>
-          </table>
-          
-        </div>
- 
-        <div>
-            <h2>Proficiencies</h2>
-            <table style={{display: "flex", justifyContent: "center"}}>
-                <tbody>
-                {Object.entries(proficiencies).map(([proficiency, description]) => (
-                    <tr key={proficiency}>
-                    <td>
-                        <strong>{proficiency}: </strong>
-                    </td>
-                    <td>
-                        {Array.isArray(description) ? (
-                        <ul>
-                            {description.map((item, index) => (
-                            <li key={index}>{item}</li>
-                            ))}
-                        </ul>
-                        ) : (
-                        <span>{description}</span>
-                        )}
-                    </td>
-                    </tr>
-                ))}
-                </tbody>
-            </table>
-        </div>
-  {/* 
-        <div>
-            <h2>Proficiencies</h2>
-            <table>
-                <tbody>
-                {Object.entries(proficiencies).map(([ability, description]) => (
-                    <tr key={ability}>
-                    {typeof description === 'string' && (
-                        <>
-                        <td>
-                            <strong>{ability}: </strong>
-                        </td>
-                        <td>{description}</td>
-                        </>
-                    )}
-                    {Array.isArray(description) && (
-                        <>
-                        <td>
-                            <strong>{ability}: </strong>
-                        </td>
-                        <td>
-                            {description.map((item, index) => (
-                            <div key={index}>
-                                <input type="checkbox" id={item} name={item} value={item} />
-                                <label htmlFor={item}>{item}</label>
-                            </div>
-                            ))}
-                        </td>
-                        </>
-                    )}
-                    </tr>
-                ))}
-                </tbody>
-            </table>
-        </div>
- */}
-        <div >
-          <h2>Equipment</h2>
-          <table style={{display: "flex", justifyContent: "center"}}>    
-            <tbody>
-                {Object.entries(equipment).map(([equipment, description]) => (
-                    <tr key={equipment}>
-                        <td>{description}</td>
-                    </tr>
-                ))}
-            </tbody>
-          </table>
-        </div>  
-        <button onClick={handleSave}>Save</button>
-      </div>
     );
   };
 
