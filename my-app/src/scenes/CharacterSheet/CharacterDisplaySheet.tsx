@@ -626,21 +626,21 @@ const CharacterSheet: React.FC = () => {
         
         </td>
         <td colSpan={2} style={{ border: '1px solid white' , maxWidth: '600px'}}>
-        <div>
+        
           <h2>Abilities</h2>
-           
-          <table>    
-            <tbody>
-                {Object.entries(abilities).map(([ability, description]) => (
-                    <tr key={ability}>
-                        <td>{ability}</td>
-                        <td>{description}</td>
-                    </tr>
-                ))}
-            </tbody>
-          </table>
+          <div style={{ height: '600px', overflow: 'auto' }}>
+            <table>    
+                <tbody>
+                    {Object.entries(abilities).map(([ability, description]) => (
+                        <tr key={ability}>
+                            <td>{ability}</td>
+                            <td>{description}</td>
+                        </tr>
+                    ))}
+                </tbody>
+            </table>
           
-        </div>
+          </div>
         </td>
         <td style={{ border: '1px solid white' , verticalAlign: 'top'}}>
         <h2>Equipment</h2>
