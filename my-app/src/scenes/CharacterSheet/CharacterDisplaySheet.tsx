@@ -16,6 +16,7 @@ import rogueImage from '../../assets/ClassIcon_Rogue.jpg';
 import sorcererImage from '../../assets/ClassIcon_Sorcerer.jpg';
 import warlockImage from '../../assets/ClassIcon_Warlock.jpg';
 import wizardImage from '../../assets/ClassIcon_Wizard.jpg';
+import { forEach } from 'lodash';
 
 
 const CharacterSheet: React.FC = () => {
@@ -181,53 +182,276 @@ const CharacterSheet: React.FC = () => {
 
     
     const fetchAbilityScores =async () => {
-        const dbRef = ref(getDatabase());
-
-        const strScoreSnapshot = await get(child(dbRef, `users/${userName}/Character/${characterName}/values/0/value`));
-        if (strScoreSnapshot.exists()) {
-            const updatedAbilityScores = AbilityScores.map((score) =>
-            score.name === "Strength" ? { ...score, value: strScoreSnapshot.val(), modifier: ((strScoreSnapshot.val()-10)/2) } : score );
+            const dbRef = ref(getDatabase());
+            let strValue: number;
+            let dexValue: number;
+            let conValue: number;
+            let intValue: number;
+            let wisValue: number;
+            let chaValue: number;
+          
+            const strScoreSnapshot = await get(child(dbRef, `users/${userName}/Character/${characterName}/values/0/value`));
+            if (strScoreSnapshot.exists()) {
+              strValue = parseInt(strScoreSnapshot.val(), 10);
+            }
+            const dexScoreSnapshot = await get(child(dbRef, `users/${userName}/Character/${characterName}/values/1/value`));
+            if (dexScoreSnapshot.exists()) {
+              dexValue = parseInt(dexScoreSnapshot.val(), 10);
+            }
+            const conScoreSnapshot = await get(child(dbRef, `users/${userName}/Character/${characterName}/values/2/value`));
+            if (conScoreSnapshot.exists()) {
+              conValue = parseInt(conScoreSnapshot.val(), 10);
+            }
+            const intScoreSnapshot = await get(child(dbRef, `users/${userName}/Character/${characterName}/values/3/value`));
+            if (intScoreSnapshot.exists()) {
+              intValue = parseInt(intScoreSnapshot.val(), 10);
+            }
+            const wisScoreSnapshot = await get(child(dbRef, `users/${userName}/Character/${characterName}/values/4/value`));
+            if (wisScoreSnapshot.exists()) {
+              wisValue = parseInt(wisScoreSnapshot.val(), 10);
+            }
+            const chaScoreSnapshot = await get(child(dbRef, `users/${userName}/Character/${characterName}/values/5/value`));
+            if (chaScoreSnapshot.exists()) {
+              chaValue = parseInt(chaScoreSnapshot.val(), 10);
+            }
+          
+            const updatedAbilityScores = AbilityScores.map((score) => {
+              if (score.name === "Strength") {
+                return { ...score, value: strValue, modifier: Math.floor(((strValue-10)/2)) };
+              }
+              if (score.name === "Dexterity") {
+                return { ...score, value: dexValue, modifier: Math.floor(((dexValue-10)/2)) };
+              }
+              if (score.name === "Constitution") {
+                return { ...score, value: conValue, modifier: Math.floor(((conValue-10)/2)) };
+              }
+              if (score.name === "Intelligence") {
+                return { ...score, value: intValue, modifier: Math.floor(((intValue-10)/2)) };
+              }
+              if (score.name === "Wisdom") {
+                return { ...score, value: wisValue, modifier: Math.floor(((wisValue-10)/2)) };
+              }
+              if (score.name === "Charisma") {
+                return { ...score, value: chaValue, modifier: Math.floor(((chaValue-10)/2)) };
+              }
+              return score;
+            });
+          
             setAbilityScores(updatedAbilityScores);
-        }
-        const dexScoreSnapshot = await get(child(dbRef, `users/${userName}/Character/${characterName}/values/1/value`));
-        if (dexScoreSnapshot.exists()) {
-            const updatedAbilityScores = AbilityScores.map((score) =>
-            score.name === "Dexterity" ? { ...score, value: dexScoreSnapshot.val(), modifier: ((dexScoreSnapshot.val()-10)/2) } : score );
-            setAbilityScores(updatedAbilityScores);
-        }
-        const conScoreSnapshot = await get(child(dbRef, `users/${userName}/Character/${characterName}/values/2/value`));
-        if (conScoreSnapshot.exists()) {
-            const updatedAbilityScores = AbilityScores.map((score) =>
-            score.name === "Constitution" ? { ...score, value: conScoreSnapshot.val(), modifier: ((conScoreSnapshot.val()-10)/2) } : score );
-            setAbilityScores(updatedAbilityScores);
-        }
-        const intScoreSnapshot = await get(child(dbRef, `users/${userName}/Character/${characterName}/values/3/value`));
-        if (intScoreSnapshot.exists()) {
-            const updatedAbilityScores = AbilityScores.map((score) =>
-            score.name === "Intelligence" ? { ...score, value: intScoreSnapshot.val(), modifier: ((intScoreSnapshot.val()-10)/2) } : score );
-            setAbilityScores(updatedAbilityScores);
-        }
-        const wisScoreSnapshot = await get(child(dbRef, `users/${userName}/Character/${characterName}/values/4/value`));
-        if (wisScoreSnapshot.exists()) {
-            const updatedAbilityScores = AbilityScores.map((score) =>
-            score.name === "Wisdom" ? { ...score, value: wisScoreSnapshot.val(), modifier: ((wisScoreSnapshot.val()-10)/2) } : score );
-            setAbilityScores(updatedAbilityScores);
-        }
-        const chaScoreSnapshot = await get(child(dbRef, `users/${userName}/Character/${characterName}/values/5/value`));
-        if (chaScoreSnapshot.exists()) {
-            const updatedAbilityScores = AbilityScores.map((score) =>
-            score.name === "Charisma" ? { ...score, value: chaScoreSnapshot.val(), modifier: ((chaScoreSnapshot.val()-10)/2) } : score );
-            setAbilityScores(updatedAbilityScores);
-        }
     }
     fetchAbilityScores();
+
+    const fetchSkills =async () => {
+        const dbRef = ref(getDatabase());
+        let skill_0 :string;
+        let skill_1 :string;
+        let skill_2 :string;
+        let skill_3 :string;
+        let skill_4 :string;
+        let proficiencyBonus:number;
+
+        switch(parseInt(characterLevel.slice(4),10)){
+            case 1:
+            case 2:
+            case 3:
+            case 4: proficiencyBonus=2; break
+
+            case 5:
+            case 6:
+            case 7:
+            case 8: proficiencyBonus=3; break
+            
+            case 9:
+            case 10:
+            case 11:
+            case 12: proficiencyBonus=4; break
+
+            case 13:
+            case 14:
+            case 15:
+            case 16: proficiencyBonus=5; break
+
+            case 17:
+            case 18:
+            case 19:
+            case 20: proficiencyBonus=6; break
+        }
+
+
+        for(let i=0; i<4; i++){
+            const skillSnapshot = await get(child(dbRef, `users/${userName}/Character/${characterName}/checkedItems/${i}`));
+            if(skillSnapshot.exists()){
+               switch(i){
+                case(0): skill_0=skillSnapshot.val(); break
+                case(1): skill_1=skillSnapshot.val(); break
+                case(2): skill_2=skillSnapshot.val(); break
+                case(3): skill_3=skillSnapshot.val(); break
+                case(4): skill_4=skillSnapshot.val(); break
+               }
+            }
+        }
+
+        const updatedSkills = skills.map((score) => {
+            if (score.name === "Athletics") {
+                if((skill_0||skill_1||skill_2||skill_3||skill_4)==="Athletics"){
+                    return { ...score,  modifier: ((AbilityScores.find(score => score.name === "Strength")?.modifier)||0)+proficiencyBonus };
+                }
+              else{
+                return { ...score,  modifier: ((AbilityScores.find(score => score.name === "Strength")?.modifier)||0) };
+              }
+            }  
+            if (score.name === "Acrobatics") {
+                if((skill_0||skill_1||skill_2||skill_3||skill_4)==="Acrobatics"){
+                    return { ...score,  modifier: ((AbilityScores.find(score => score.name === "Dexterity")?.modifier)||0)+proficiencyBonus };
+                }
+              else{
+                return { ...score,  modifier: ((AbilityScores.find(score => score.name === "Dexterity")?.modifier)||0) };
+              }
+            }
+            if (score.name === "Sleight of Hand") {
+                if((skill_0||skill_1||skill_2||skill_3||skill_4)==="Sleight of Hand"){
+                    return { ...score,  modifier: ((AbilityScores.find(score => score.name === "Dexterity")?.modifier)||0)+proficiencyBonus };
+                }
+              else{
+                return { ...score,  modifier: ((AbilityScores.find(score => score.name === "Dexterity")?.modifier)||0) };
+              }
+            }
+            if (score.name === "Stealth") {
+                if((skill_0||skill_1||skill_2||skill_3||skill_4)==="Stealth"){
+                    return { ...score,  modifier: ((AbilityScores.find(score => score.name === "Dexterity")?.modifier)||0)+proficiencyBonus };
+                }
+              else{
+                return { ...score,  modifier: ((AbilityScores.find(score => score.name === "Dexterity")?.modifier)||0) };
+              }
+            }
+            if (score.name === "Arcana") {
+                if((skill_0||skill_1||skill_2||skill_3||skill_4)==="Arcana"){
+                    return { ...score,  modifier: ((AbilityScores.find(score => score.name === "Intelligence")?.modifier)||0)+proficiencyBonus };
+                }
+              else{
+                return { ...score,  modifier: ((AbilityScores.find(score => score.name === "Intelligence")?.modifier)||0) };
+              }
+            }
+            if (score.name === "History") {
+                if((skill_0||skill_1||skill_2||skill_3||skill_4)==="History"){
+                    return { ...score,  modifier: ((AbilityScores.find(score => score.name === "Intelligence")?.modifier)||0)+proficiencyBonus };
+                }
+              else{
+                return { ...score,  modifier: ((AbilityScores.find(score => score.name === "Intelligence")?.modifier)||0) };
+              }
+            }
+            if (score.name === "Investigation") {
+                if((skill_0||skill_1||skill_2||skill_3||skill_4)==="Investigation"){
+                    return { ...score,  modifier: ((AbilityScores.find(score => score.name === "Intelligence")?.modifier)||0)+proficiencyBonus };
+                }
+              else{
+                return { ...score,  modifier: ((AbilityScores.find(score => score.name === "Intelligence")?.modifier)||0) };
+              }
+            }
+            if (score.name === "Nature") {
+                if((skill_0||skill_1||skill_2||skill_3||skill_4)==="Nature"){
+                    return { ...score,  modifier: ((AbilityScores.find(score => score.name === "Intelligence")?.modifier)||0)+proficiencyBonus };
+                }
+              else{
+                return { ...score,  modifier: ((AbilityScores.find(score => score.name === "Intelligence")?.modifier)||0) };
+              }
+            }
+            if (score.name === "Religion") {
+                if((skill_0||skill_1||skill_2||skill_3||skill_4)==="Religion"){
+                    return { ...score,  modifier: ((AbilityScores.find(score => score.name === "Intelligence")?.modifier)||0)+proficiencyBonus };
+                }
+              else{
+                return { ...score,  modifier: ((AbilityScores.find(score => score.name === "Intelligence")?.modifier)||0) };
+              }
+            }
+            if (score.name === "Animal Handling") {
+                if((skill_0||skill_1||skill_2||skill_3||skill_4)==="Animal Handling"){
+                    return { ...score,  modifier: ((AbilityScores.find(score => score.name === "Wisdom")?.modifier)||0)+proficiencyBonus };
+                }
+              else{
+                return { ...score,  modifier: ((AbilityScores.find(score => score.name === "Wisdom")?.modifier)||0) };
+              }
+            }
+            if (score.name === "Insight") {
+                if((skill_0||skill_1||skill_2||skill_3||skill_4)==="Insight"){
+                    return { ...score,  modifier: ((AbilityScores.find(score => score.name === "Wisdom")?.modifier)||0)+proficiencyBonus };
+                }
+              else{
+                return { ...score,  modifier: ((AbilityScores.find(score => score.name === "Wisdom")?.modifier)||0) };
+              }
+            }
+            if (score.name === "Medicine") {
+                if((skill_0||skill_1||skill_2||skill_3||skill_4)==="Medicine"){
+                    return { ...score,  modifier: ((AbilityScores.find(score => score.name === "Wisdom")?.modifier)||0)+proficiencyBonus };
+                }
+              else{
+                return { ...score,  modifier: ((AbilityScores.find(score => score.name === "Wisdom")?.modifier)||0) };
+              }
+            }
+            if (score.name === "Perception") {
+                if((skill_0||skill_1||skill_2||skill_3||skill_4)==="Perception"){
+                    return { ...score,  modifier: ((AbilityScores.find(score => score.name === "Wisdom")?.modifier)||0)+proficiencyBonus };
+                }
+              else{
+                return { ...score,  modifier: ((AbilityScores.find(score => score.name === "Wisdom")?.modifier)||0) };
+              }
+            }
+            if (score.name === "Survival") {
+                if((skill_0||skill_1||skill_2||skill_3||skill_4)==="Survival"){
+                    return { ...score,  modifier: ((AbilityScores.find(score => score.name === "Wisdom")?.modifier)||0)+proficiencyBonus };
+                }
+              else{
+                return { ...score,  modifier: ((AbilityScores.find(score => score.name === "Wisdom")?.modifier)||0) };
+              }
+            }
+            if (score.name === "Deception") {
+                if((skill_0||skill_1||skill_2||skill_3||skill_4)==="Deception"){
+                    return { ...score,  modifier: ((AbilityScores.find(score => score.name === "Charisma")?.modifier)||0)+proficiencyBonus };
+                }
+              else{
+                return { ...score,  modifier: ((AbilityScores.find(score => score.name === "Charisma")?.modifier)||0) };
+              }
+            }
+            if (score.name === "Intimidation") {
+                if((skill_0||skill_1||skill_2||skill_3||skill_4)==="Intimidation"){
+                    return { ...score,  modifier: ((AbilityScores.find(score => score.name === "Charisma")?.modifier)||0)+proficiencyBonus };
+                }
+              else{
+                return { ...score,  modifier: ((AbilityScores.find(score => score.name === "Charisma")?.modifier)||0) };
+              }
+            }
+            if (score.name === "Performance") {
+                if((skill_0||skill_1||skill_2||skill_3||skill_4)==="Performance"){
+                    return { ...score,  modifier: ((AbilityScores.find(score => score.name === "Charisma")?.modifier)||0)+proficiencyBonus };
+                }
+              else{
+                return { ...score,  modifier: ((AbilityScores.find(score => score.name === "Charisma")?.modifier)||0) };
+              }
+            }
+            if (score.name === "Persuasion") {
+                if((skill_0||skill_1||skill_2||skill_3||skill_4)==="Persuasion"){
+                    return { ...score,  modifier: ((AbilityScores.find(score => score.name === "Charisma")?.modifier)||0)+proficiencyBonus };
+                }
+              else{
+                return { ...score,  modifier: ((AbilityScores.find(score => score.name === "Charisma")?.modifier)||0) };
+              }
+            }
+            
+            
+            return score;
+          });
+        
+          setSkills(updatedSkills);
+        
+        
+    }
     
 
     const calcHpAndAC = async()=>{
         let lvlNumber = parseInt(characterLevel.slice(4),10);
         let constModifier = (AbilityScores.find(score => score.name === "Constitution")?.modifier)||0;
         let dexModifier = (AbilityScores.find(score => score.name === "Dexterity")?.modifier)||0;
-        let wisModifier = (AbilityScores.find(score => score.name === "Dexterity")?.modifier)||0;
+        let wisModifier = (AbilityScores.find(score => score.name === "Wisdom")?.modifier)||0;
         const dbRef = ref(getDatabase());
         const hitPointSnapshot = await get(child(dbRef, `Class/${className}/Base/Hit Points`));
         if (hitPointSnapshot.exists()) {
@@ -268,7 +492,7 @@ const CharacterSheet: React.FC = () => {
     fetchProficiencies();
     fetchAbilities();
     fetchEquipment();
-   
+    fetchSkills();
         
   });
 
