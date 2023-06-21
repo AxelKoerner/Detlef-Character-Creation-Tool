@@ -5,6 +5,7 @@ import "react-pro-sidebar/dist/css/styles.css";
 import { tokens } from "../../theme";
 import AccountBoxIcon from '@mui/icons-material/AccountBox';
 import HomeOutlinedIcon from "@mui/icons-material/HomeOutlined";
+import LineageIcon from "@mui/icons-material/AccountTree";
 import LogoutIcon from '@mui/icons-material/Logout';
 import MenuOutlinedIcon from "@mui/icons-material/MenuOutlined";
 import secureLocalStorage from "react-secure-storage";
@@ -185,6 +186,13 @@ const SideBar = () => {
                             title="Custom Background"
                             to="/customBackground"
                             icon={<WallpaperIcon />}
+                            selected={selected}
+                            setSelected={setSelected}
+                        />
+                        <Item
+                            title="Custom Lineage"
+                            to="/customLineage"
+                            icon={< LineageIcon />}
                             selected={selected}
                             setSelected={setSelected}
                         />

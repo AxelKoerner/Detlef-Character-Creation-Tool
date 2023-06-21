@@ -62,6 +62,60 @@ const BackgroundForm: React.FC = () => {
 
   return (
     <div>
+    <h2>Background Form</h2>
+    <table style={{borderCollapse: 'collapse',display: "flex", justifyContent: "center"}}>
+       <tbody>
+        <tr>
+            <td >Background Name:</td>
+            <td >
+                <label>
+                    
+                    <input type="text" value={backgroundName} onChange={(e) => setBackgroundName(e.target.value)} />
+                </label>
+            </td>
+            
+            <td ><button onClick={handleSave}>Save</button></td>
+        </tr>
+        <tr>
+            <td >
+            Ability Name:
+            <br/>
+            Ability Value:
+            </td>
+            <td >
+                <label>
+                    <input type="text" value={abilityName} onChange={(e) => setAbilityName(e.target.value)} />
+                </label>
+                <br/>
+                <label>
+                    <input type="text" value={abilityValue} onChange={(e) => setAbilityValue(e.target.value)} />
+                </label>
+            </td>
+            
+            <td colSpan={2} style={{  height: '200px', overflow: 'auto' }}>
+                Equipment:
+                {equipmentFields.map((field) => (
+                    <div key={field.id}>
+                    <label>
+                        Equipment ID {field.id}:
+                        <input
+                        type="text"
+                        value={field.value}
+                        onChange={(e) => handleEquipmentFieldChange(field.id, e.target.value)}
+                        />
+                    </label>
+                    <button onClick={() => handleRemoveEquipmentField(field.id)}>Remove</button>
+                    <br />
+                    </div>
+                ))}
+                <button onClick={handleAddEquipmentField}>Add Equipment Field</button>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+    </div>
+    /*
+    <div>
       <h2>Background Form</h2>
       <label>
         Background Name:
@@ -97,6 +151,7 @@ const BackgroundForm: React.FC = () => {
       <br />
       <button onClick={handleSave}>Save</button>
     </div>
+    */
   );
 };
 

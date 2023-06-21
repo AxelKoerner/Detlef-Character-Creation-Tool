@@ -62,6 +62,94 @@ const LineageForm: React.FC = () => {
 
   return (
     <div>
+        <h2>Lineage Form</h2>
+        <table style={{borderCollapse: 'collapse',display: "flex", justifyContent: "center"}}>
+            <tbody>
+                <tr>
+                    <td>
+                        <label>
+                            Lineage Name:
+                            <input type="text" value={lineageName} onChange={(e) => setLineageName(e.target.value)} />
+                        </label>
+                        <br/>
+                        <br/>
+                        <br/>
+                    </td>
+                    <td></td>
+                    <td>
+                        <label>
+                            Size:
+                            <input type="text" value={size} onChange={(e) => setSize(e.target.value)} />
+                        </label>
+                        <br/>
+                        <br/>
+                        <br/>
+                    </td>
+                    <td></td>
+                    <td>
+                        <label>
+                            Speed:
+                            <input type="text" value={speed} onChange={(e) => setSpeed(e.target.value)} />
+                        </label>
+                        <br/>
+                        <br/>
+                        <br/>
+                    </td>
+                </tr>
+                <tr>
+                    <td colSpan={5}>
+                        {abilities.map((field) => (
+                            <div key={field.id}>
+                            <label>
+                                Ability Name:
+                                <input
+                                type="text"
+                                value={field.name}
+                                onChange={(e) => handleAbilityFieldChange(field.id, e.target.value, field.value)}
+                                />
+                            </label>
+                            <label>
+                                Ability Value:
+                                <input
+                                type="text"
+                                value={field.value}
+                                onChange={(e) => handleAbilityFieldChange(field.id, field.name, e.target.value)}
+                                />
+                            </label>
+                            <button onClick={() => handleRemoveAbilityField(field.id)}>Remove</button>
+                            
+                            <br/>
+                            <br/>
+                            
+                            </div>
+                        ))}
+                        <br/>
+                    </td>
+                    
+                </tr>
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td>
+                        <button onClick={handleAddAbilityField}>Add Ability Field</button>
+                        <br/>
+                        <br/>
+                    </td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td><button onClick={handleSave}>Save</button></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    /*
+    <div>
       <h2>Lineage Form</h2>
       <label>
         Lineage Name:
@@ -105,6 +193,7 @@ const LineageForm: React.FC = () => {
       <br />
       <button onClick={handleSave}>Save</button>
     </div>
+    */
   );
 };
 

@@ -2,9 +2,6 @@ import React, { useEffect, useState } from 'react';
 import firebase from 'firebase/compat/app';
 import {getDatabase, ref, child, get, set, onValue} from 'firebase/database';
 import { initializeApp } from "firebase/app";
-//import firebaseConfig from '../../config/config';
-import { getAuth, onAuthStateChanged, User } from 'firebase/auth';
-import { boolean } from 'yup';
 import secureLocalStorage from 'react-secure-storage';
 import d20_Image from '../../assets/D20Icon.jpg'
 
