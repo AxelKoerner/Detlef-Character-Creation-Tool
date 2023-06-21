@@ -38,9 +38,6 @@ const Topbar = () => {
 
     const [inputValue, setInputValue] = useState('');
 
-    const handleInputChange = (e: any) => {
-        setInputValue(e.target.value);
-    };
 
     return (<Box display="flex" justifyContent="space-between" p={2}>
         {/* SEARCH BAR */}
@@ -54,7 +51,6 @@ const Topbar = () => {
                 sx={{ml: 2, flex: 1}}
                 placeholder="Search"
                 value={inputValue}
-                onChange={handleInputChange}
             />
             <IconButton type={"button"} sx={{p: 1}}>
                 <SearchIcon/>
@@ -70,10 +66,12 @@ const Topbar = () => {
                     <LightModeIcon/>
                 )}
             </IconButton>
-            <IconButton aria-describedby={id} onClick={handleClick}>
+            <IconButton data-testid='handleClickButton'
+                        aria-describedby={id} onClick={handleClick}>
                 <AccountBoxIcon/>
             </IconButton>
             <Popover
+                data-testid='popover'
                 id={id}
                 open={open}
                 anchorEl={anchorEl}
@@ -101,6 +99,7 @@ const Topbar = () => {
                     />
                     </Box>
                     <Button
+                        data-testid='navigateProfile'
                         variant={"contained"}
                         fullWidth
                         onClick={navigateToProfile}
@@ -108,6 +107,7 @@ const Topbar = () => {
                                 bgcolor: colors.greenAccent[400]}
                         }}> Profile </Button>
                     <Button
+                        data-testid='handleCloseButton'
                         variant={"contained"}
                         fullWidth
                         onClick={logout}

@@ -103,7 +103,9 @@ const SideBar = () => {
                                 <Typography variant="h3" color={colors.grey[100]}>
                                     D E T L E F
                                 </Typography>
-                                <IconButton onClick={() => setIsCollapsed(!isCollapsed)}>
+                                <IconButton
+                                    data-testid='setCollapsed'
+                                    onClick={() => setIsCollapsed(!isCollapsed)}>
                                     <MenuOutlinedIcon />
                                 </IconButton>
                             </Box>
@@ -161,6 +163,7 @@ const SideBar = () => {
                             setSelected={setSelected}
                         />
                         <Item
+                            data-testid='logout'
                             title="Logout"
                             to="/"
                             icon={<LogoutIcon />}
