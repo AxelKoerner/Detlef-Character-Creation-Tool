@@ -38,6 +38,14 @@
     "test": "react-scripts test --coverage --watchAll",
     "eject": "react-scripts eject"
   },
+  "jest": {
+    "coverageThreshold": {
+      "global": {
+        "lines": 70
+      }
+    },
+    "coveragePathIgnorePatterns": ["index.tsx"]
+  },
   "eslintConfig": {
     "extends": [
       "react-app",

@@ -1,0 +1,441 @@
+{
+  "users": {
+  "testUser": {
+    "email": "test@test.com",
+    "name": "test",
+    "password": "test",
+    "picture": "https://test.com",
+    "Character": {
+      "NewChar": {
+        "abilities": {
+          "Ability Score Improvement": "When you reach 4th level, you can increase one ability score of your choice by 2, or you can increase two ability scores of your choice by 1. As normal, you can't increase an ability score above 20 using this feature.  If your DM allows the use of feats, you may instead take a feat.",
+          "Danger Sense": "At 2nd level, you gain an uncanny sense of when things nearby aren't as they should be, giving you an edge when you dodge away from danger. You have advantage on Dexterity saving throws against effects that you can see, such as traps and spells. To gain this benefit, you can't be blinded, deafened, or incapacitated.",
+          "Drow Magic": "You know the dancing lights cantrip. When you reach 3rd level, you can cast the faerie fire spell once with this trait; you regain the ability to cast it when you finish a long rest. When you reach 5th level, you can also cast the darkness spell once per day with this trait; you regain the ability to cast it when you finish a long rest. Charisma is your spellcasting ability for these spells.",
+          "Drow Weapon Training": "You have proficiency with rapiers, shortswords, and hand crossbows.",
+          "Extra Attack": "Beginning at 5th level, you can attack twice, instead of once, whenever you take the Attack action on your turn.",
+          "False Identity": "You have created a second identity that includes documentation, established acquaintances, and disguises that allow you to assume that persona. Additionally, you can forge documents including official papers and personal letters, as long as you have seen an example of the kind of document or the handwriting you are trying to copy.",
+          "Fast Movement": "Starting at 5th level, your speed increases by 10 feet while you aren't wearing heavy armor.",
+          "Fey Ancestry": "You have advantage on saving throws against being charmed, and magic can't put you to sleep.",
+          "Keen Senses": "You have proficiency in the Perception skill.",
+          "Primal Knowledge": "When you reach 3rd level and again at 10th level, you gain proficiency in one skill of your choice from the list of skills available to barbarians at 1st level.",
+          "Primal Path": "At 3rd level, you choose a path that shapes the nature of your rage from the list of available paths. Your choice grants you features at 3rd level and again at 6th, 10th, and 14th levels.",
+          "Rage": "In battle, you fight with primal ferocity. On your turn, you can enter a rage as a bonus action.  While raging, you gain the following benefits if you aren't wearing heavy armor:  You have advantage on Strength checks and Strength saving throws. When you make a melee weapon attack using Strength, you gain a +2 bonus to the damage roll. This bonus increases as you level. You have resistance to bludgeoning, piercing, and slashing damage. If you are able to cast spells, you can't cast them or concentrate on them while raging.  Your rage lasts for 1 minute. It ends early if you are knocked unconscious or if your turn ends and you haven't attacked a hostile creature since your last turn or taken damage since then. You can also end your rage on your turn as a bonus action.  Once you have raged the maximum number of times for your barbarian level, you must finish a long rest before you can rage again. You may rage 2 times at 1st level, 3 at 3rd, 4 at 6th, 5 at 12th, and 6 at 17th.",
+          "Reckless Attack": "Starting at 2nd level, you can throw aside all concern for defense to attack with fierce desperation. When you make your first attack on your turn, you can decide to attack recklessly. Doing so gives you advantage on melee weapon attack rolls using Strength during this turn, but attack rolls against you have advantage until your next turn.",
+          "Sunlight Sensitivity": "You have disadvantage on attack rolls and on Wisdom (Perception) checks that rely on sight when you, the target of your attack, or whatever you are trying to perceive is in direct sunlight.",
+          "Superior Darkvision": "Accustomed to the depths of the Underdark, you have superior vision in dark and dim conditions. You can see in dim light within 120 feet of you as if it were bright light, and in darkness as if it were dim light. You can't discern color in darkness, only shades of gray.",
+          "Trance": "Elves don't need to sleep. Instead, they meditate deeply, remaining semiconscious, for 4 hours a day. (The Common word for such meditation is \"trance.\") While meditating, you can dream after a fashion; such dreams are actually mental exercises that have become reflexive through years of practice. After resting in this way, you gain the same benefit that a human does from 8 hours of sleep.",
+          "Unarmored Defense": "While you are not wearing any armor, your Armor Class equals 10 + your Dexterity modifier + your Constitution modifier. You can use a shield and still gain this benefit."
+        },
+        "backgrounds": [
+          "Acolyte",
+          "Charlatan",
+          "testName"
+        ],
+        "checkedItems": [
+          "Athletics",
+          "Sleight of Hand",
+          "Arcana",
+          "Nature",
+          "Insight"
+        ],
+        "classes": [
+          "Barbarian"
+        ],
+        "equipment": [
+          null,
+          "Fine Clothes",
+          "Disguise kit",
+          "Con Tools"
+        ],
+        "lineages": [
+          "Drow"
+        ],
+        "proficiencies": {
+          "Armor": [
+            null,
+            "Light",
+            "Medium",
+            "Shield"
+          ],
+          "Saving Throws": [
+            null,
+            "Str",
+            "Const"
+          ],
+          "Weapons": [
+            null,
+            "Simple Weapons",
+            "Martial Weapons"
+          ]
+        },
+        "selectedBackground": "Charlatan",
+        "selectedClass": "Barbarian",
+        "selectedLevel": "Lvl_05",
+        "selectedLineage": "Drow",
+        "values": [
+          {
+            "checked1": false,
+            "checked2": true,
+            "disabled1": true,
+            "disabled2": false,
+            "name": "Strenght",
+            "value": 17
+          },
+          {
+            "checked1": true,
+            "checked2": false,
+            "disabled1": false,
+            "disabled2": false,
+            "name": "Dexterity",
+            "value": 9
+          },
+          {
+            "checked1": false,
+            "checked2": false,
+            "disabled1": true,
+            "disabled2": false,
+            "name": "Constitution",
+            "value": 8
+          },
+          {
+            "checked1": false,
+            "checked2": false,
+            "disabled1": true,
+            "disabled2": false,
+            "name": "Intelligence",
+            "value": 8
+          },
+          {
+            "checked1": false,
+            "checked2": false,
+            "disabled1": true,
+            "disabled2": false,
+            "name": "Wisdom",
+            "value": 8
+          },
+          {
+            "checked1": false,
+            "checked2": false,
+            "disabled1": true,
+            "disabled2": false,
+            "name": "Charisma",
+            "value": 8
+          }
+        ]
+      },
+      "YOUR_CHARACTER_ID": {
+        "abilities": {
+          "Ability Score Improvement": "When you reach 4th level, you can increase one ability score of your choice by 2, or you can increase two ability scores of your choice by 1. As normal, you can't increase an ability score above 20 using this feature.  If your DM allows the use of feats, you may instead take a feat.",
+          "Danger Sense": "At 2nd level, you gain an uncanny sense of when things nearby aren't as they should be, giving you an edge when you dodge away from danger. You have advantage on Dexterity saving throws against effects that you can see, such as traps and spells. To gain this benefit, you can't be blinded, deafened, or incapacitated.",
+          "Drow Magic": "You know the dancing lights cantrip. When you reach 3rd level, you can cast the faerie fire spell once with this trait; you regain the ability to cast it when you finish a long rest. When you reach 5th level, you can also cast the darkness spell once per day with this trait; you regain the ability to cast it when you finish a long rest. Charisma is your spellcasting ability for these spells.",
+          "Drow Weapon Training": "You have proficiency with rapiers, shortswords, and hand crossbows.",
+          "Fey Ancestry": "You have advantage on saving throws against being charmed, and magic can't put you to sleep.",
+          "Keen Senses": "You have proficiency in the Perception skill.",
+          "Primal Knowledge": "When you reach 3rd level and again at 10th level, you gain proficiency in one skill of your choice from the list of skills available to barbarians at 1st level.",
+          "Primal Path": "At 3rd level, you choose a path that shapes the nature of your rage from the list of available paths. Your choice grants you features at 3rd level and again at 6th, 10th, and 14th levels.",
+          "Rage": "In battle, you fight with primal ferocity. On your turn, you can enter a rage as a bonus action.  While raging, you gain the following benefits if you aren't wearing heavy armor:  You have advantage on Strength checks and Strength saving throws. When you make a melee weapon attack using Strength, you gain a +2 bonus to the damage roll. This bonus increases as you level. You have resistance to bludgeoning, piercing, and slashing damage. If you are able to cast spells, you can't cast them or concentrate on them while raging.  Your rage lasts for 1 minute. It ends early if you are knocked unconscious or if your turn ends and you haven't attacked a hostile creature since your last turn or taken damage since then. You can also end your rage on your turn as a bonus action.  Once you have raged the maximum number of times for your barbarian level, you must finish a long rest before you can rage again. You may rage 2 times at 1st level, 3 at 3rd, 4 at 6th, 5 at 12th, and 6 at 17th.",
+          "Reckless Attack": "Starting at 2nd level, you can throw aside all concern for defense to attack with fierce desperation. When you make your first attack on your turn, you can decide to attack recklessly. Doing so gives you advantage on melee weapon attack rolls using Strength during this turn, but attack rolls against you have advantage until your next turn.",
+          "Shelter of the Faithful": "As an acolyte, you command the respect of those who share your faith, and you can perform the religious ceremonies of your deity. You and your adventuring companions can expect to receive free healing and care at a temple, shrine, or other established presence of your faith, though you must provide any material components needed for spells. Those who share your religion will support you (but only you) at a modest lifestyle.  You might also have ties to a specific temple dedicated to your chosen deity or pantheon, and you have a residence there. This could be the temple where you used to serve, if you remain on good terms with it, or a temple where you have found a new home. While near your temple, you can call upon the priests for assistance, provided the assistance you ask for is not hazardous and you remain in good standing with your temple.",
+          "Sunlight Sensitivity": "You have disadvantage on attack rolls and on Wisdom (Perception) checks that rely on sight when you, the target of your attack, or whatever you are trying to perceive is in direct sunlight.",
+          "Superior Darkvision": "Accustomed to the depths of the Underdark, you have superior vision in dark and dim conditions. You can see in dim light within 120 feet of you as if it were bright light, and in darkness as if it were dim light. You can't discern color in darkness, only shades of gray.",
+          "Trance": "Elves don't need to sleep. Instead, they meditate deeply, remaining semiconscious, for 4 hours a day. (The Common word for such meditation is \"trance.\") While meditating, you can dream after a fashion; such dreams are actually mental exercises that have become reflexive through years of practice. After resting in this way, you gain the same benefit that a human does from 8 hours of sleep.",
+          "Unarmored Defense": "While you are not wearing any armor, your Armor Class equals 10 + your Dexterity modifier + your Constitution modifier. You can use a shield and still gain this benefit."
+        },
+        "backgrounds": [
+          "Acolyte",
+          "Charlatan"
+        ],
+        "checkedItems": [
+          2,
+          4,
+          7,
+          13,
+          12
+        ],
+        "classes": [
+          "Barbarian"
+        ],
+        "equipment": [
+          null,
+          "Holy Symbol",
+          "Prayer Book",
+          "5 Sticks of Incense",
+          "Vestments",
+          "Common Clothes"
+        ],
+        "lineages": [
+          "Drow"
+        ],
+        "proficiencies": {
+          "Armor": [
+            null,
+            "Light",
+            "Medium",
+            "Shield"
+          ],
+          "Saving Throws": [
+            null,
+            "Str",
+            "Const"
+          ],
+          "Weapons": [
+            null,
+            "Simple Weapons",
+            "Martial Weapons"
+          ]
+        },
+        "selectedBackground": "Acolyte",
+        "selectedClass": "Barbarian",
+        "selectedLevel": "Lvl_04",
+        "selectedLineage": "Drow",
+        "values": [
+          {
+            "name": "Strenght",
+            "value": 13
+          },
+          {
+            "name": "Dexterity",
+            "value": 8
+          },
+          {
+            "name": "Constitution",
+            "value": 12
+          },
+          {
+            "name": "Intelligence",
+            "value": 10
+          },
+          {
+            "name": "Wisdom",
+            "value": 10
+          },
+          {
+            "name": "Charisma",
+            "value": 8
+          }
+        ]
+      },
+      "test2": {
+        "abilities": {
+          "Ability Score Improvement": "When you reach 8th level, you can increase one ability score of your choice by 2, or you can increase two ability scores of your choice by 1. As normal, you can't increase an ability score above 20 using this feature.  If your DM allows the use of feats, you may instead take a feat.",
+          "Danger Sense": "At 2nd level, you gain an uncanny sense of when things nearby aren't as they should be, giving you an edge when you dodge away from danger. You have advantage on Dexterity saving throws against effects that you can see, such as traps and spells. To gain this benefit, you can't be blinded, deafened, or incapacitated.",
+          "Drow Magic": "You know the dancing lights cantrip. When you reach 3rd level, you can cast the faerie fire spell once with this trait; you regain the ability to cast it when you finish a long rest. When you reach 5th level, you can also cast the darkness spell once per day with this trait; you regain the ability to cast it when you finish a long rest. Charisma is your spellcasting ability for these spells.",
+          "Drow Weapon Training": "You have proficiency with rapiers, shortswords, and hand crossbows.",
+          "Extra Attack": "Beginning at 5th level, you can attack twice, instead of once, whenever you take the Attack action on your turn.",
+          "False Identity": "You have created a second identity that includes documentation, established acquaintances, and disguises that allow you to assume that persona. Additionally, you can forge documents including official papers and personal letters, as long as you have seen an example of the kind of document or the handwriting you are trying to copy.",
+          "Fast Movement": "Starting at 5th level, your speed increases by 10 feet while you aren't wearing heavy armor.",
+          "Feral Instinct": "By 7th level, your instincts are so honed that you have advantage on initiative rolls.  Additionally, if you are surprised at the beginning of combat and aren't incapacitated, you can act normally on your first turn, but only if you enter your rage before doing anything else on that turn.",
+          "Fey Ancestry": "You have advantage on saving throws against being charmed, and magic can't put you to sleep.",
+          "Instinctive Pounce": "As part of the bonus action you take to enter your rage, you can move up to half your speed.",
+          "Keen Senses": "You have proficiency in the Perception skill.",
+          "Path Feature": "At 6th level, you gain a feature from your Primal Path.",
+          "Primal Knowledge": "When you reach 3rd level and again at 10th level, you gain proficiency in one skill of your choice from the list of skills available to barbarians at 1st level.",
+          "Primal Path": "At 3rd level, you choose a path that shapes the nature of your rage from the list of available paths. Your choice grants you features at 3rd level and again at 6th, 10th, and 14th levels.",
+          "Rage": "In battle, you fight with primal ferocity. On your turn, you can enter a rage as a bonus action.  While raging, you gain the following benefits if you aren't wearing heavy armor:  You have advantage on Strength checks and Strength saving throws. When you make a melee weapon attack using Strength, you gain a +2 bonus to the damage roll. This bonus increases as you level. You have resistance to bludgeoning, piercing, and slashing damage. If you are able to cast spells, you can't cast them or concentrate on them while raging.  Your rage lasts for 1 minute. It ends early if you are knocked unconscious or if your turn ends and you haven't attacked a hostile creature since your last turn or taken damage since then. You can also end your rage on your turn as a bonus action.  Once you have raged the maximum number of times for your barbarian level, you must finish a long rest before you can rage again. You may rage 2 times at 1st level, 3 at 3rd, 4 at 6th, 5 at 12th, and 6 at 17th.",
+          "Reckless Attack": "Starting at 2nd level, you can throw aside all concern for defense to attack with fierce desperation. When you make your first attack on your turn, you can decide to attack recklessly. Doing so gives you advantage on melee weapon attack rolls using Strength during this turn, but attack rolls against you have advantage until your next turn.",
+          "Sunlight Sensitivity": "You have disadvantage on attack rolls and on Wisdom (Perception) checks that rely on sight when you, the target of your attack, or whatever you are trying to perceive is in direct sunlight.",
+          "Superior Darkvision": "Accustomed to the depths of the Underdark, you have superior vision in dark and dim conditions. You can see in dim light within 120 feet of you as if it were bright light, and in darkness as if it were dim light. You can't discern color in darkness, only shades of gray.",
+          "Trance": "Elves don't need to sleep. Instead, they meditate deeply, remaining semiconscious, for 4 hours a day. (The Common word for such meditation is \"trance.\") While meditating, you can dream after a fashion; such dreams are actually mental exercises that have become reflexive through years of practice. After resting in this way, you gain the same benefit that a human does from 8 hours of sleep.",
+          "Unarmored Defense": "While you are not wearing any armor, your Armor Class equals 10 + your Dexterity modifier + your Constitution modifier. You can use a shield and still gain this benefit."
+        },
+        "backgrounds": [
+          "Acolyte",
+          "Charlatan"
+        ],
+        "checkedItems": [
+          "Sleight of Hand",
+          "Nature",
+          "Survival",
+          "Insight",
+          "Performance"
+        ],
+        "classes": [
+          "Barbarian"
+        ],
+        "equipment": [
+          null,
+          "Fine Clothes",
+          "Disguise kit",
+          "Con Tools"
+        ],
+        "lineages": [
+          "Drow"
+        ],
+        "proficiencies": {
+          "Armor": [
+            null,
+            "Light",
+            "Medium",
+            "Shield"
+          ],
+          "Saving Throws": [
+            null,
+            "Str",
+            "Const"
+          ],
+          "Weapons": [
+            null,
+            "Simple Weapons",
+            "Martial Weapons"
+          ]
+        },
+        "selectedBackground": "Charlatan",
+        "selectedClass": "Barbarian",
+        "selectedLevel": "Lvl_08",
+        "selectedLineage": "Drow",
+        "values": [
+          {
+            "name": "Strenght",
+            "value": 8
+          },
+          {
+            "name": "Dexterity",
+            "value": 11
+          },
+          {
+            "name": "Constitution",
+            "value": 8
+          },
+          {
+            "name": "Intelligence",
+            "value": 11
+          },
+          {
+            "name": "Wisdom",
+            "value": 10
+          },
+          {
+            "name": "Charisma",
+            "value": 8
+          }
+        ]
+      },
+      "testChar": {
+        "abilities": {
+          "Ability Score Improvement": "When you reach 8th level, you can increase one ability score of your choice by 2, or you can increase two ability scores of your choice by 1. As normal, you can't increase an ability score above 20 using this feature.  If your DM allows the use of feats, you may instead take a feat.",
+          "Brutal Critical (1 die)": "Beginning at 9th level, you can roll one additional weapon damage die when determining the extra damage for a critical hit with a melee attack.  This increases to two additional dice at 13th level and three additional dice at 17th level.",
+          "Danger Sense": "At 2nd level, you gain an uncanny sense of when things nearby aren't as they should be, giving you an edge when you dodge away from danger. You have advantage on Dexterity saving throws against effects that you can see, such as traps and spells. To gain this benefit, you can't be blinded, deafened, or incapacitated.",
+          "Drow Magic": "You know the dancing lights cantrip. When you reach 3rd level, you can cast the faerie fire spell once with this trait; you regain the ability to cast it when you finish a long rest. When you reach 5th level, you can also cast the darkness spell once per day with this trait; you regain the ability to cast it when you finish a long rest. Charisma is your spellcasting ability for these spells.",
+          "Drow Weapon Training": "You have proficiency with rapiers, shortswords, and hand crossbows.",
+          "Extra Attack": "Beginning at 5th level, you can attack twice, instead of once, whenever you take the Attack action on your turn.",
+          "Fast Movement": "Starting at 5th level, your speed increases by 10 feet while you aren't wearing heavy armor.",
+          "Feral Instinct": "By 7th level, your instincts are so honed that you have advantage on initiative rolls.  Additionally, if you are surprised at the beginning of combat and aren't incapacitated, you can act normally on your first turn, but only if you enter your rage before doing anything else on that turn.",
+          "Fey Ancestry": "You have advantage on saving throws against being charmed, and magic can't put you to sleep.",
+          "Instinctive Pounce": "As part of the bonus action you take to enter your rage, you can move up to half your speed.",
+          "Keen Senses": "You have proficiency in the Perception skill.",
+          "Path Feature": "At 6th level, you gain a feature from your Primal Path.",
+          "Path feature": "At 10th level, you gain a feature from your Primal Path.",
+          "Primal Knowledge": "When you reach 3rd level and again at 10th level, you gain proficiency in one skill of your choice from the list of skills available to barbarians at 1st level.",
+          "Primal Path": "At 3rd level, you choose a path that shapes the nature of your rage from the list of available paths. Your choice grants you features at 3rd level and again at 6th, 10th, and 14th levels.",
+          "Rage": "In battle, you fight with primal ferocity. On your turn, you can enter a rage as a bonus action.  While raging, you gain the following benefits if you aren't wearing heavy armor:  You have advantage on Strength checks and Strength saving throws. When you make a melee weapon attack using Strength, you gain a +2 bonus to the damage roll. This bonus increases as you level. You have resistance to bludgeoning, piercing, and slashing damage. If you are able to cast spells, you can't cast them or concentrate on them while raging.  Your rage lasts for 1 minute. It ends early if you are knocked unconscious or if your turn ends and you haven't attacked a hostile creature since your last turn or taken damage since then. You can also end your rage on your turn as a bonus action.  Once you have raged the maximum number of times for your barbarian level, you must finish a long rest before you can rage again. You may rage 2 times at 1st level, 3 at 3rd, 4 at 6th, 5 at 12th, and 6 at 17th.",
+          "Reckless Attack": "Starting at 2nd level, you can throw aside all concern for defense to attack with fierce desperation. When you make your first attack on your turn, you can decide to attack recklessly. Doing so gives you advantage on melee weapon attack rolls using Strength during this turn, but attack rolls against you have advantage until your next turn.",
+          "Shelter of the Faithful": "As an acolyte, you command the respect of those who share your faith, and you can perform the religious ceremonies of your deity. You and your adventuring companions can expect to receive free healing and care at a temple, shrine, or other established presence of your faith, though you must provide any material components needed for spells. Those who share your religion will support you (but only you) at a modest lifestyle.  You might also have ties to a specific temple dedicated to your chosen deity or pantheon, and you have a residence there. This could be the temple where you used to serve, if you remain on good terms with it, or a temple where you have found a new home. While near your temple, you can call upon the priests for assistance, provided the assistance you ask for is not hazardous and you remain in good standing with your temple.",
+          "Sunlight Sensitivity": "You have disadvantage on attack rolls and on Wisdom (Perception) checks that rely on sight when you, the target of your attack, or whatever you are trying to perceive is in direct sunlight.",
+          "Superior Darkvision": "Accustomed to the depths of the Underdark, you have superior vision in dark and dim conditions. You can see in dim light within 120 feet of you as if it were bright light, and in darkness as if it were dim light. You can't discern color in darkness, only shades of gray.",
+          "Trance": "Elves don't need to sleep. Instead, they meditate deeply, remaining semiconscious, for 4 hours a day. (The Common word for such meditation is \"trance.\") While meditating, you can dream after a fashion; such dreams are actually mental exercises that have become reflexive through years of practice. After resting in this way, you gain the same benefit that a human does from 8 hours of sleep.",
+          "Unarmored Defense": "While you are not wearing any armor, your Armor Class equals 10 + your Dexterity modifier + your Constitution modifier. You can use a shield and still gain this benefit."
+        },
+        "backgrounds": [
+          "Acolyte",
+          "Charlatan",
+          "testName"
+        ],
+        "checkedItems": [
+          "Acrobatics",
+          "Arcana",
+          "Animal Handling",
+          "Deception",
+          "Athletics"
+        ],
+        "classes": [
+          "Barbarian"
+        ],
+        "equipment": [
+          null,
+          "Holy Symbol",
+          "Prayer Book",
+          "5 Sticks of Incense",
+          "Vestments",
+          "Common Clothes"
+        ],
+        "lineages": [
+          "Drow",
+          "testLineage"
+        ],
+        "proficiencies": {
+          "Armor": [
+            null,
+            "Light",
+            "Medium",
+            "Shield"
+          ],
+          "Saving Throws": [
+            null,
+            "Str",
+            "Const"
+          ],
+          "Weapons": [
+            null,
+            "Simple Weapons",
+            "Martial Weapons"
+          ]
+        },
+        "selectedBackground": "Acolyte",
+        "selectedClass": "Barbarian",
+        "selectedLevel": "Lvl_20",
+        "selectedLineage": "Drow",
+        "values": [
+          {
+            "checked1": true,
+            "checked2": false,
+            "disabled1": false,
+            "disabled2": false,
+            "name": "Strenght",
+            "value": 9
+          },
+          {
+            "checked1": true,
+            "checked2": false,
+            "disabled1": false,
+            "disabled2": false,
+            "name": "Dexterity",
+            "value": 9
+          },
+          {
+            "checked1": true,
+            "checked2": false,
+            "disabled1": true,
+            "disabled2": false,
+            "name": "Constitution",
+            "value": 9
+          },
+          {
+            "checked1": true,
+            "checked2": false,
+            "disabled1": true,
+            "disabled2": false,
+            "name": "Intelligence",
+            "value": 9
+          },
+          {
+            "checked1": true,
+            "checked2": false,
+            "disabled1": true,
+            "disabled2": false,
+            "name": "Wisdom",
+            "value": 9
+          },
+          {
+            "checked1": true,
+            "checked2": false,
+            "disabled1": true,
+            "disabled2": false,
+            "name": "Charisma",
+            "value": 9
+          }
+        ]
+      }
+    }
+  }
+}
+}
