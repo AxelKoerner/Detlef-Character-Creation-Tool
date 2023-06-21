@@ -1,4 +1,3 @@
-import firebaseConfig from '../../config/config';
 import React, { useState } from 'react';
 import { ref, set, getDatabase } from 'firebase/database';
 
@@ -69,7 +68,7 @@ const LineageForm: React.FC = () => {
                     <td>
                         <label>
                             Lineage Name:
-                            <input type="text" value={lineageName} onChange={(e) => setLineageName(e.target.value)} />
+                            <input data-testid='lineage name' type="text" value={lineageName} onChange={(e) => setLineageName(e.target.value)} />
                         </label>
                         <br/>
                         <br/>
@@ -79,7 +78,7 @@ const LineageForm: React.FC = () => {
                     <td>
                         <label>
                             Size:
-                            <input type="text" value={size} onChange={(e) => setSize(e.target.value)} />
+                            <input data-testid='size' type="text" value={size} onChange={(e) => setSize(e.target.value)} />
                         </label>
                         <br/>
                         <br/>
@@ -89,7 +88,7 @@ const LineageForm: React.FC = () => {
                     <td>
                         <label>
                             Speed:
-                            <input type="text" value={speed} onChange={(e) => setSpeed(e.target.value)} />
+                            <input data-testid='speed' type="text" value={speed} onChange={(e) => setSpeed(e.target.value)} />
                         </label>
                         <br/>
                         <br/>
@@ -103,6 +102,7 @@ const LineageForm: React.FC = () => {
                             <label>
                                 Ability Name:
                                 <input
+                                    data-testid='ability name'
                                 type="text"
                                 value={field.name}
                                 onChange={(e) => handleAbilityFieldChange(field.id, e.target.value, field.value)}
@@ -111,12 +111,13 @@ const LineageForm: React.FC = () => {
                             <label>
                                 Ability Value:
                                 <input
+                                    data-testid='ability value'
                                 type="text"
                                 value={field.value}
                                 onChange={(e) => handleAbilityFieldChange(field.id, field.name, e.target.value)}
                                 />
                             </label>
-                            <button onClick={() => handleRemoveAbilityField(field.id)}>Remove</button>
+                            <button data-testid='remove abilities' onClick={() => handleRemoveAbilityField(field.id)}>Remove</button>
                             
                             <br/>
                             <br/>
@@ -131,7 +132,7 @@ const LineageForm: React.FC = () => {
                     <td></td>
                     <td></td>
                     <td>
-                        <button onClick={handleAddAbilityField}>Add Ability Field</button>
+                        <button data-testid='add abilities' onClick={handleAddAbilityField}>Add Ability Field</button>
                         <br/>
                         <br/>
                     </td>
@@ -141,7 +142,7 @@ const LineageForm: React.FC = () => {
                 <tr>
                     <td></td>
                     <td></td>
-                    <td><button onClick={handleSave}>Save</button></td>
+                    <td><button data-testid='handleSave' onClick={handleSave}>Save</button></td>
                     <td></td>
                     <td></td>
                 </tr>
