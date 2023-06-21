@@ -1,31 +1,13 @@
 import firebaseConfig from '../../config/config';
 
-import { getDatabase, ref, child, get, set } from 'firebase/database';
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
+import { ref, set, getDatabase } from 'firebase/database';
 
 const BackgroundForm: React.FC = () => {
   const [backgroundName, setBackgroundName] = useState('');
   const [abilityName, setAbilityName] = useState('');
   const [abilityValue, setAbilityValue] = useState('');
   const [equipmentFields, setEquipmentFields] = useState([{ id: 1, value: '' }]);
-
-  useEffect(() => {
-    // Initialize Firebase app and database configuration
-
-    // Example config:
-    // const firebaseConfig = {
-    //   apiKey: 'YOUR_API_KEY',
-    //   authDomain: 'YOUR_AUTH_DOMAIN',
-    //   databaseURL: 'YOUR_DATABASE_URL',
-    //   projectId: 'YOUR_PROJECT_ID',
-    //   storageBucket: 'YOUR_STORAGE_BUCKET',
-    //   messagingSenderId: 'YOUR_MESSAGING_SENDER_ID',
-    //   appId: 'YOUR_APP_ID',
-    // };
-
-    // Initialize Firebase app
-    // firebase.initializeApp(firebaseConfig);
-  }, []);
 
   const handleSave = async () => {
     const db = getDatabase();
@@ -61,6 +43,11 @@ const BackgroundForm: React.FC = () => {
     const newEquipmentId = equipmentFields.length + 1;
     const newEquipmentField = { id: newEquipmentId, value: '' };
     setEquipmentFields([...equipmentFields, newEquipmentField]);
+  };
+
+  const handleRemoveEquipmentField = (id: number) => {
+    const updatedEquipmentFields = equipmentFields.filter((field) => field.id !== id);
+    setEquipmentFields(updatedEquipmentFields);
   };
 
   const handleEquipmentFieldChange = (id: number, value: string) => {
@@ -102,6 +89,8 @@ const BackgroundForm: React.FC = () => {
               onChange={(e) => handleEquipmentFieldChange(field.id, e.target.value)}
             />
           </label>
+          <button onClick={() => handleRemoveEquipmentField(field.id)}>Remove</button>
+          <br />
         </div>
       ))}
       <button onClick={handleAddEquipmentField}>Add Equipment Field</button>
@@ -112,4 +101,5 @@ const BackgroundForm: React.FC = () => {
 };
 
 export default BackgroundForm;
+
 

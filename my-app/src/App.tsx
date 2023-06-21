@@ -11,7 +11,8 @@ import Dashboards from "./scenes/dashboards";
 import CreateAccount from "./scenes/createAccount";
 import DndCharacterSheet from './scenes/CharacterSheet/CharacterSheet';
 import CustomBackground from './scenes/Custom/CustomBackground';
-
+import CustomLineage from './scenes/Custom/CustomLineage';
+import CharacterDisplaySheet from './scenes/CharacterSheet/CharacterDisplaySheet';
 
 function App() {
     const [theme, colorMode] = useMode();
@@ -32,6 +33,8 @@ function App() {
                                 <Route path="/createAccount" element={<CreateAccount/>}/>
                                 <Route path="/characterSheet" element={<DndCharacterSheet/>}/>
                                 <Route path="/customBackground" element={<CustomBackground/>}/>
+                                <Route path="/customLineage" element={<CustomLineage/>}/>
+                                <Route path="/characterDisplaySheet" element={<CharacterDisplaySheet/>}/>
                             </Routes>
 
                     </main>
