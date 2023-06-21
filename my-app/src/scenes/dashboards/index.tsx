@@ -53,7 +53,7 @@ function Dashboards() {
     return (
         <>
             <Typography variant={"h1"}>DASHBOARDS</Typography>
-            <GridLayout className="layout" cols={12} rowHeight={30} width={2050} layout={layout}>
+            <GridLayout className="layout" cols={12} rowHeight={30} width={1750} layout={layout}>
                 <div key="profile">
                     <Paper
                         elevation={4}
@@ -78,8 +78,8 @@ function Dashboards() {
                                     display: "flex",
                                     justifyContent: "center",
                                     alignItems: "center",
-                                    maxWidth: "100%", // Add this line
-                                    maxHeight: "100%" // Add this line
+                                    maxWidth: "100%",
+                                    maxHeight: "100%"
                                 }}
                             >
                                 <img
@@ -111,10 +111,11 @@ function Dashboards() {
                                     {userName}
                                 </Typography>
                                 <Typography
+                                    color={colors.greenAccent[500]}
                                     sx={{
                                         overflowWrap: "break-word",
                                         wordBreak: "break-word",
-                                        mt: 1
+                                        mt: 1,
                                     }}
                                 >
                                     {userMail}
