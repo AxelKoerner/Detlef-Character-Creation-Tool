@@ -8,6 +8,8 @@ import HomeOutlinedIcon from "@mui/icons-material/HomeOutlined";
 import LogoutIcon from '@mui/icons-material/Logout';
 import MenuOutlinedIcon from "@mui/icons-material/MenuOutlined";
 import secureLocalStorage from "react-secure-storage";
+import Face5Icon from '@mui/icons-material/Face5';
+import WallpaperIcon from '@mui/icons-material/Wallpaper';
 import StockImage from "../../assets/stock_profile_image.jpg";
 import {initializeApp} from "firebase/app";
 import {getDatabase, onValue, ref} from "firebase/database";
@@ -176,6 +178,29 @@ const SideBar = () => {
                             selected={selected}
                             setSelected={setSelected}
                         />
+
+                        <Typography
+                            variant="h6"
+                            color={colors.grey[300]}
+                            sx={{ m: "15px 0 5px 20px" }}
+                        >
+                            Character Creation
+                        </Typography>
+                        <Item
+                            title="DnD Character Sheet"
+                            to="/characterSheet"
+                            icon={<Face5Icon />}
+                            selected={selected}
+                            setSelected={setSelected}
+                        />
+                        <Item
+                            title="Custom Background"
+                            to="/customBackground"
+                            icon={<WallpaperIcon />}
+                            selected={selected}
+                            setSelected={setSelected}
+                        />
+
                     </Box>
                 </ProSidebar.Menu>
             </ProSidebar.ProSidebar>
