@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import firebase from 'firebase/compat/app';
-import {getDatabase, ref, child, get, set} from 'firebase/database';
+import {getDatabase, ref, child, get, set, onValue} from 'firebase/database';
 import { initializeApp } from "firebase/app";
 //import firebaseConfig from '../../config/config';
 import { getAuth, onAuthStateChanged, User } from 'firebase/auth';
 import { boolean } from 'yup';
+import secureLocalStorage from 'react-secure-storage';
 
 
 const firebaseConfig = {
@@ -33,7 +34,9 @@ const DndCharacterSheet: React.FC = () => {
     const [proficiencies, setProficiencies] = useState<{ [key: string]: any }>({});
     const [checkedItems, setCheckedItems] = useState<number[]>([]);
     const groupedData: { [ability: string]: any[] } = {};
-    
+    const userMail = (secureLocalStorage.getItem('email') !==  null) ? secureLocalStorage.getItem('email') : 'none';
+    const [userName, setName] = useState<string[]>([]);
+
     const [values, setValues] = useState/*<{ name: string; value: number }[]>*/([
         { name: "Strenght", value: 8 , checked1: false , checked2: false, disabled1: false, disabled2:false},
         { name: "Dexterity", value: 8 , checked1: false, checked2: false, disabled1: false, disabled2:false},
@@ -64,6 +67,18 @@ const DndCharacterSheet: React.FC = () => {
       ];
   
     useEffect(() => {
+
+        const fetchUserName = async () => {
+        const dbData = ref(database, 'users/');
+        onValue(dbData, (snapshot) => {
+            const data = snapshot.val();
+            for(let key in data) {
+                let entry = data[key];
+                if(entry.email === userMail) {
+                    setName(entry.name);
+                }
+            }});
+        }
       const fetchLineages = async () => {
         const dbRef = ref(getDatabase());
         const lineagesSnapshot = await get(child(dbRef, 'Lineage'));
@@ -90,7 +105,8 @@ const DndCharacterSheet: React.FC = () => {
           setBackgrounds(Object.keys(backgroundsData));
         }
       };
-  
+      
+      fetchUserName();
       fetchLineages();
       fetchClasses();
       fetchBackgrounds();
@@ -99,7 +115,8 @@ const DndCharacterSheet: React.FC = () => {
     const handleLineageChange = async (event: React.ChangeEvent<HTMLSelectElement>) => {
         const selectedLineage = event.target.value;
         setSelectedLineage(selectedLineage);
-      
+
+     
         // Fetch abilities data for the selected lineage from the database
         const dbRef = ref(getDatabase());
         const abilitiesSnapshot = await get(child(dbRef, `Lineage/${selectedLineage}/Abilities`));
@@ -327,10 +344,14 @@ const DndCharacterSheet: React.FC = () => {
 
 
       const handleSave = () => {
-        const userId = 'YOUR_USER_ID'; // Replace with the actual user ID
+        //const userId = 'YOUR_USER_ID'; // Replace with the actual user ID
         const characterIdInput = document.getElementById("characterID") as HTMLInputElement;
         const characterId = characterIdInput.value; // Retrieve the input value as characterId
       
+
+            const userId = userName;
+        
+
         if (!characterId) {
             alert("Please enter a character Name.");
             return;
