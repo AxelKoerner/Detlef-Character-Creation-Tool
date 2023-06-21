@@ -13,12 +13,11 @@ function Dashboards() {
     const theme = useTheme();
     const colors = tokens(theme.palette.mode);
     const layout = [
-        {i: "profile", x: 0, y: 0, w: 2.5, h: 12, minW: 2, minH: 12},
-        {i: "b", x: 5, y: 0, w: 1, h: 3, minH: 3},
-        {i: "c", x: 6, y: 0, w: 1, h: 3, minH: 3},
-        {i: "d", x: 7, y: 0, w: 1, h: 3, minH: 3}
+        {i: "profile", x: 0, y: 0, w: 3, h: 12, minW: 3, minH: 12},
+        {i: "b", x: 3, y: 0, w: 3, h: 8, minW: 3, minH: 12},
+        {i: "c", x: 6, y: 0, w: 3, h: 8, minW: 3, minH: 12}
     ];
-    let profilePicture = (secureLocalStorage.getItem('picture') !== 'undefined') ? secureLocalStorage.getItem('picture') : StockImage
+    let profilePicture = (secureLocalStorage.getItem('picture') !== null) ? secureLocalStorage.getItem('picture') : StockImage
     const firebaseConfig = {
         apiKey: "AIzaSyDjAlBgT7ybr2GZrNgq3zFZoKu1jn7stHg",
         authDomain: "cctool-c001b.firebaseapp.com",
@@ -51,14 +50,10 @@ function Dashboards() {
         })
     }, []   )
 
-    // ...
-
-// ...
-
     return (
         <>
             <Typography variant={"h1"}>DASHBOARDS</Typography>
-            <GridLayout className="layout" cols={12} rowHeight={30} width={2050} layout={layout}>
+            <GridLayout className="layout" cols={12} rowHeight={30} width={1750} layout={layout}>
                 <div key="profile">
                     <Paper
                         elevation={4}
@@ -83,8 +78,8 @@ function Dashboards() {
                                     display: "flex",
                                     justifyContent: "center",
                                     alignItems: "center",
-                                    maxWidth: "100%", // Add this line
-                                    maxHeight: "100%" // Add this line
+                                    maxWidth: "100%",
+                                    maxHeight: "100%"
                                 }}
                             >
                                 <img
@@ -116,10 +111,11 @@ function Dashboards() {
                                     {userName}
                                 </Typography>
                                 <Typography
+                                    color={colors.greenAccent[500]}
                                     sx={{
                                         overflowWrap: "break-word",
                                         wordBreak: "break-word",
-                                        mt: 1
+                                        mt: 1,
                                     }}
                                 >
                                     {userMail}
@@ -140,17 +136,6 @@ function Dashboards() {
                     </Paper>
                 </div>
                 <div key="c">
-                    <Paper
-                        elevation={4}
-                        sx={{
-                            padding: 5,
-                            background: colors.primary[400],
-                            width: "inherit",
-                            height: "inherit"
-                        }}>
-                    </Paper>
-                </div>
-                <div key="d">
                     <Paper
                         elevation={4}
                         sx={{

@@ -187,16 +187,16 @@ const Profile = () => {
                                 )}
                             </Formik>
                         </Grid>
-                    <Grid item xs={6}>
-                        <img
-                            id={"profile_image"}
-                            alt="profile-user"
-                            width="300px"
-                            height="300px"
-                            src={profile_image?.toString()}
-                            style={{ cursor: "pointer", borderRadius: "50%" }}
-                        />
-                    </Grid>
+                        <Grid item xs={6}>
+                            <img
+                                id={"profile_image"}
+                                alt="profile-user"
+                                width="300px"
+                                height="300px"
+                                src={profile_image?.toString()}
+                                style={{ cursor: "pointer", borderRadius: "50%" }}
+                            />
+                        </Grid>
                     </Grid>
                 </Paper>
             </Grid>

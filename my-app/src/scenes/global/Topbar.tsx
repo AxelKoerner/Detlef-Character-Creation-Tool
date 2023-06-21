@@ -2,10 +2,9 @@ import NightsStayIcon from '@mui/icons-material/NightsStay';
 import LightModeIcon from '@mui/icons-material/LightMode';
 import AccountBoxIcon from '@mui/icons-material/AccountBox';
 import SearchIcon from '@mui/icons-material/Search';
-import NewCharIcon from '@mui/icons-material/PlusOne'
 import {Box, Button, IconButton, InputBase, Paper, Popover, useTheme} from "@mui/material";
 import {ColorModeContext, tokens} from "../../theme";
-import React, {useContext} from "react";
+import React, {useContext, useState} from "react";
 import {useNavigate} from "react-router-dom";
 import secureLocalStorage from "react-secure-storage";
 import StockImage from "../../assets/stock_profile_image.jpg";
@@ -30,21 +29,33 @@ const Topbar = () => {
     const logout = () => {
         secureLocalStorage.clear();
         navigate("/")
+        window.location.reload();
     }
 
     const navigateToProfile = () => {
         navigate("/profile");
     }
 
+    const [inputValue, setInputValue] = useState('');
+
+    const handleInputChange = (e: any) => {
+        setInputValue(e.target.value);
+    };
 
     return (<Box display="flex" justifyContent="space-between" p={2}>
         {/* SEARCH BAR */}
         <Box sx={{
             display: 'flex',
             boxShadow: 1,
-            backgroundColor: colors.primary["400"]
+            backgroundColor: colors.primary["400"],
+            borderRadius: "3px"
         }}>
-            <InputBase sx={{ml: 2, flex: 1}} placeholder="Search"/>
+            <InputBase
+                sx={{ml: 2, flex: 1}}
+                placeholder="Search"
+                value={inputValue}
+                onChange={handleInputChange}
+            />
             <IconButton type={"button"} sx={{p: 1}}>
                 <SearchIcon/>
             </IconButton>

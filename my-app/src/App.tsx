@@ -13,15 +13,18 @@ import DndCharacterSheet from './scenes/CharacterSheet/CharacterSheet';
 import CustomBackground from './scenes/Custom/CustomBackground';
 import CustomLineage from './scenes/Custom/CustomLineage';
 import CharacterDisplaySheet from './scenes/CharacterSheet/CharacterDisplaySheet';
+import SideBar from "./scenes/global/SideBar";
 
 function App() {
     const [theme, colorMode] = useMode();
 
+    // @ts-ignore
     return (<ColorModeContext.Provider value={colorMode}>
             <ThemeProvider theme={theme}>
                 <CssBaseline/>
-                <div className="App">
+                <div className="app">
                     <BrowserRouter>
+                        <SideBar />
                     <main className="content">
                         <Topbar/>
 
