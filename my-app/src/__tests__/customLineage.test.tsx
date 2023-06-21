@@ -89,4 +89,5 @@ describe('Custom Lineage', () => {
         expect(abilityValue).not.toBeVisible()
 
     })
+
 })

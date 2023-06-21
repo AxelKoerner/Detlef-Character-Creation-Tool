@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import firebase from 'firebase/compat/app';
 import {getDatabase, ref, child, get, set, onValue} from 'firebase/database';
 import { initializeApp } from "firebase/app";
 import secureLocalStorage from 'react-secure-storage';
@@ -374,7 +373,7 @@ const DndCharacterSheet: React.FC = () => {
           <tr>
             <td colSpan={4} style={{ border: '1px solid white' }}>
              
-                <button onClick={handleSave}>Save</button>
+                <button data-testid='handleSave' onClick={handleSave}>Save</button>
       
             </td>
           </tr>
@@ -396,7 +395,7 @@ const DndCharacterSheet: React.FC = () => {
                         <tr>
                             {values.map((value, index) => (
                             <td key={index}>
-                                <button onClick={() => increaseValue(index)}>+</button>
+                                <button data-testid={value.name} onClick={() => increaseValue(index)}>+</button>
                                 <br />
                                 {value.name}
                             </td>
@@ -419,6 +418,7 @@ const DndCharacterSheet: React.FC = () => {
                             <td key={columnIndex}>
                                 <label>
                                 <input
+                                    data-testid={value.name + 'checked1'}
                                     type="checkbox"
                                     checked={value.checked1}
                                     onChange={() =>
@@ -436,6 +436,7 @@ const DndCharacterSheet: React.FC = () => {
                             <td key={columnIndex}>
                                 <label>
                                 <input
+                                    data-testid={value.name + 'checked2'}
                                     type="checkbox"
                                     checked={value.checked2}
                                     onChange={() =>
@@ -460,7 +461,7 @@ const DndCharacterSheet: React.FC = () => {
                         <td>Name:</td>
                         <td>
                             <label>
-                                <input type="text" id="characterID" />
+                                <input  data-testid='name' type="text" id="characterID" />
                             </label>
                         </td>
                     </tr>
@@ -469,7 +470,7 @@ const DndCharacterSheet: React.FC = () => {
                         <td>
                             <label>
                     
-                                <select value={selectedClass} onChange={handleClassChange}>
+                                <select  data-testid="class" value={selectedClass} onChange={handleClassChange}>
                                     <option value="">Select Class</option>
                                         {classes.map((classKey) => (
                                     <option key={classKey} value={classKey}>
@@ -484,7 +485,7 @@ const DndCharacterSheet: React.FC = () => {
                         <td> Level:</td>
                         <td>
                             <label>
-                                <select value={selectedLevel} onChange={handleLevelChange}>
+                                <select data-testid="level" value={selectedLevel} onChange={handleLevelChange}>
                                     <option value="Lvl_01">Lvl_01</option>
                                     <option value="Lvl_02">Lvl_02</option>
                                     <option value="Lvl_03">Lvl_03</option>
@@ -513,7 +514,7 @@ const DndCharacterSheet: React.FC = () => {
                         <td> Lineage:</td>
                         <td>
                             <label>
-                                <select value={selectedLineage} onChange={handleLineageChange}>
+                                <select data-testid="lineage" value={selectedLineage} onChange={handleLineageChange}>
                                 <option value="">Select Lineage</option>
                                 {lineages.map((lineageKey) => (
                                     <option key={lineageKey} value={lineageKey}>
@@ -528,7 +529,7 @@ const DndCharacterSheet: React.FC = () => {
                         <td>Background:</td>
                         <td>
                             <label>
-                                <select value={selectedBackground} onChange={handleBackgroundChange}>
+                                <select data-testid="background" value={selectedBackground} onChange={handleBackgroundChange}>
                                 <option value="">Select Background</option>
                                 {backgrounds.map((backgroundKey) => (
                                     <option key={backgroundKey} value={backgroundKey}>
@@ -558,6 +559,7 @@ const DndCharacterSheet: React.FC = () => {
                                 <td>{item.name}</td>
                                 <td>
                                     <input
+                                        data-testid={'skills' + item.name}
                                     type="checkbox"
                                     id={`checkbox-${item.name}`}
                                     checked={checkedItems.includes(item.name)}
