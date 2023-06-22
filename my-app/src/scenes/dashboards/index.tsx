@@ -2,7 +2,7 @@ import GridLayout from "react-grid-layout";
 import React, {useEffect, useState} from "react";
 import 'react-grid-layout/css/styles.css';
 import 'react-resizable/css/styles.css';
-import {Box, Paper, Typography, useTheme} from "@mui/material";
+import {Box, Button, Paper, Typography, useTheme} from "@mui/material";
 import {tokens} from "../../theme";
 import secureLocalStorage from "react-secure-storage";
 import StockImage from "../../assets/stock_profile_image.jpg";
@@ -21,6 +21,7 @@ import rogueImage from '../../assets/ClassIcon_Rogue.jpg';
 import sorcererImage from '../../assets/ClassIcon_Sorcerer.jpg';
 import warlockImage from '../../assets/ClassIcon_Warlock.jpg';
 import wizardImage from '../../assets/ClassIcon_Wizard.jpg';
+import {Link} from "react-router-dom";
 
 function Dashboards() {
     const theme = useTheme();
@@ -53,7 +54,8 @@ function Dashboards() {
 
         const fetchCharacters = async () => {
             const dbRef = ref(getDatabase());
-            const characterSnapshot = await get(child(dbRef, `users/${userName}/Character`));
+            //const characterSnapshot = await get(child(dbRef, `users/${userName}/Character`));
+            const characterSnapshot = await get(child(dbRef, `users/test/Character`));
             if (characterSnapshot.exists()) {
               
               
@@ -63,6 +65,11 @@ function Dashboards() {
 
         fetchCharacters();
     }, []   )
+
+    const handleButtonClick = (key: string) => {
+        const url = `/characterDisplaySheet?characterName=${encodeURIComponent(key)}`;
+        window.location.href = url;
+      };
 
     return (
         <>
@@ -366,7 +373,10 @@ function Dashboards() {
                                         mt: 1,
                                     }}
                                 >
-                                    {key}
+                                <Button variant="contained" onClick={() => handleButtonClick(key)}>
+                                     {key}
+                                 </Button>
+                                    
                                 </Typography>
                             </Box>
                         </Box>

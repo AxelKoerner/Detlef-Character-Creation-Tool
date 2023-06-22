@@ -3,7 +3,7 @@ Detlef-Character-Creation-Tool
 
 This is a University Project with the goal, to create a fully fledged out website with a list of different goals. The project is a character creation tool for pen & paper games, specific for Dungeons & Dragons.
 
-## Planned User Stories (draft)
+## User Stories
 1) [x] When the User wants to login, he can create an account
 2) [x] If the user wants to log in, he can use the login form, and gain access to our website and his data
 3) [x] If the user wants to log out, he can use the logout form, and logs out of his account
@@ -27,22 +27,17 @@ This is a University Project with the goal, to create a fully fledged out websit
 20) [x] When the user wants to define his character, he can choose a Background, automatically updating his abilities and equipment
 
 21) [x] When User wants to save the character for future use, he can access a save button, to create a new character file
-
+22) [x] When the user wants to look at his character, he can select display Character Sheet, to view the saved Character on 1-2 pages
 
 
 TODO:
 
-5) [x] When the user logs in, and looks at his profile, he wants to see his personal information 
-7) [x] When the user is finished with creating his character, he can save it in his profile
-17) [ ] When User wants to create a random character, he can access a button, to create a random character file
-
-19) [ ] When User wants to see all his characters, he can access a folder, containing all his characters
-21) [x] When the user wants to look at his character, he can select display Character Sheet, to view the saved Character on 1-2 pages
-22) [ ] When the user selects expand Actions, he is navigated to a feature, which displays the regarding information
-23) [ ] When selecting the Action, to use that save, the game internally rolls a dice
-24) [ ] When selecting the saving throw, to use that save, the game internally rolls a dice
-25) [ ] When User Wants to organize his saved Characters, he can create a new folder, when saving the character
-26) [ ] When User decides to level up the character, he can select a simple button, giving him access to higher level features
-27) [ ] When User wants to export the character, he can select print, to create a pdf of the Character Sheet
+23) [ ] When User wants to create a random character, he can access a button, to create a random character file
+24) [ ] When User wants to see all his characters, he can access a folder, containing all his characters
+25) [ ] When the user selects expand Actions, he is navigated to a feature, which displays the regarding information
+26) [ ] When the user wants to use an Action requiring a die-roll the game internally rolls a dice and adds the corresponding modifiers
+27) [ ] When User Wants to organize his saved Characters, he can create a new folder, when saving the character
+28) [ ] When User decides to level up the character, he can select a simple button, giving him access to higher level features
+29) [ ] When User wants to export the character, he can select print, to create a pdf of the Character Sheet
 
 

@@ -1,8 +1,9 @@
-import firebaseConfig from '../../config/config';
+//import firebaseConfig from '../../config/config';
 import React, { useEffect, useState } from 'react';
 import { ref, get, getDatabase, onValue, child } from 'firebase/database';
 import database from '../../config/config';
 import secureLocalStorage from 'react-secure-storage';
+import { useParams } from 'react-router-dom';
 import artificerImage from '../../assets/ClassIcon_Artificer.jpg';
 import barbarianImage from '../../assets/ClassIcon_Barbarian.jpg';
 import bardImage from '../../assets/ClassIcon_Bard.jpg';
@@ -16,15 +17,26 @@ import rogueImage from '../../assets/ClassIcon_Rogue.jpg';
 import sorcererImage from '../../assets/ClassIcon_Sorcerer.jpg';
 import warlockImage from '../../assets/ClassIcon_Warlock.jpg';
 import wizardImage from '../../assets/ClassIcon_Wizard.jpg';
-import { forEach } from 'lodash';
+
+const firebaseConfig = {
+  apiKey: "AIzaSyDjAlBgT7ybr2GZrNgq3zFZoKu1jn7stHg",
+  authDomain: "cctool-c001b.firebaseapp.com",
+  databaseURL: "https://cctool-c001b-default-rtdb.europe-west1.firebasedatabase.app",
+  projectId: "cctool-c001b",
+  storageBucket: "cctool-c001b.appspot.com",
+  messagingSenderId: "736945444931",
+  appId: "1:736945444931:web:07a06f34302f63b8929cf6"
+};
+
 
 const CharacterSheet: React.FC = () => {
     
-  const [characterName, setCharacterName] = useState('testName');
+  const urlParams = new URLSearchParams(window.location.search);
+  const characterName = urlParams.get('characterName');
   const [className, setClassName] = useState('');
   const [lineage, setLineage] = useState('');
   const [background, setBackground] = useState('');
-  const userMail = (secureLocalStorage.getItem('email') !==  null) ? secureLocalStorage.getItem('email') : 'none';
+  const userMail = /*"test@test.com"*/(secureLocalStorage.getItem('email') !==  null) ? secureLocalStorage.getItem('email') : 'none';
   const [userName, setName] = useState<string[]>([]);
   const [classPicture, setClassPicture] =useState(''); 
   const [characterLevel, setCharacterLevel] = useState('');
