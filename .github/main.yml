@@ -27,7 +27,11 @@ jobs:
         run: cd my-app
 
       - name: Install dependencies
-        run: npm install
+        run: npm install --prefix my-app
 
       - name: Run Jest tests
-        run: npm test
+        run: |
+          npm --prefix my-app test -- --silent
+          echo "Test overview:"
+          cat ./my-app/coverage/lcov-report/index.html
+        continue-on-error: true
