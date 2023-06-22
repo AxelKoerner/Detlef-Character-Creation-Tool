@@ -28,7 +28,7 @@ function Dashboards() {
     const colors = tokens(theme.palette.mode);
     const [characters, setCharacters] = useState<any[]>([]);
     const layout = [
-        {i: "profile", x: 0, y: 0, w: 3, h: 12, minW: 3, minH: 12},
+        {i: "profile", x: 0, y: 0, w: 2.5, h: 11, minW: 2.5, minH: 11},
         {i: "b", x: 3, y: 0, w: 6, h: 8, minW: 6, minH: 8},
         {i: "c", x: 6, y: 0, w: 6, h: 8, minW: 6, minH: 8}
     ];
@@ -373,7 +373,11 @@ function Dashboards() {
                                         mt: 1,
                                     }}
                                 >
-                                <Button variant="contained" onClick={() => handleButtonClick(key)}>
+                                <Button
+                                    sx={{color: colors.grey[100], backgroundColor: colors.blueAccent[600],mb: 1, ":hover": {
+                                            bgcolor: colors.greenAccent[400]}}}
+                                    variant="contained"
+                                    onClick={() => handleButtonClick(key)} >
                                      {key}
                                  </Button>
                                     

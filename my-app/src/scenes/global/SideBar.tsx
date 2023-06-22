@@ -16,7 +16,7 @@ import {onValue, ref} from "firebase/database";
 import {Link} from "react-router-dom";
 import database from '../../config/config';
 
-const Item = ({ title, to, icon, selected, setSelected }: {title: string; to: string; icon: any; selected: any; setSelected: any}) => {
+const Item = ({ title, to, icon, selected, setSelected, setUserName, setUserMail }: {title: string; to: string; icon: any; selected: any; setSelected: any; setUserName?: any, setUserMail?: any}) => {
     const theme = useTheme();
     const colors = tokens(theme.palette.mode);
     return (
@@ -27,7 +27,11 @@ const Item = ({ title, to, icon, selected, setSelected }: {title: string; to: st
             }}
             onClick={() => {
                 setSelected(title);
-                if(to === '/') {secureLocalStorage.clear()}
+                if(to === '/') {
+                    secureLocalStorage.clear()
+                    setUserMail('')
+                    setUserName('')
+                }
             }}
             icon={icon}
         >
@@ -43,8 +47,8 @@ const SideBar = () => {
     const [isCollapsed, setIsCollapsed] = useState(false);
     const [selected, setSelected] = useState("Dashboard");
     let profilePicture = (secureLocalStorage.getItem('picture') !== null) ? secureLocalStorage.getItem('picture') : StockImage;
-    const [userName, setUserName] = React.useState("");
-    const [userMail, setUserMail] = React.useState("");
+    const [userName, setUserName] = React.useState(((secureLocalStorage.getItem('name') !== null) ? secureLocalStorage.getItem('name') : '')?.toString());
+    const [userMail, setUserMail] = React.useState(((secureLocalStorage.getItem('email') !== null) ? secureLocalStorage.getItem('email') : '')?.toString());
 
     useEffect(() => {
         const mail = secureLocalStorage.getItem("email");
@@ -165,6 +169,8 @@ const SideBar = () => {
                         <Item
                             data-testid='logout'
                             title="Logout"
+                            setUserName={setUserName}
+                            setUserMail={setUserMail}
                             to="/"
                             icon={<LogoutIcon />}
                             selected={selected}
