@@ -1,6 +1,6 @@
 import {fireEvent, getByTestId, render} from '@testing-library/react'
 import CharacterSheet from "../scenes/CharacterSheet/CharacterSheet";
-import {initializeApp} from "firebase/app";
+import {deleteApp, initializeApp} from "firebase/app";
 
 const firebaseConfig = {
     apiKey: "AIzaSyDjAlBgT7ybr2GZrNgq3zFZoKu1jn7stHg",
@@ -105,6 +105,11 @@ describe('Character Sheet', () => {
         fireEvent.click(safe);
         expect(alertMock).toHaveBeenCalledTimes(1);
     })
+
+    afterAll(async() => {
+        const app = initializeApp(firebaseConfig);
+        await deleteApp(app);
+      });
 
 
 })
