@@ -27,7 +27,7 @@ jobs:
         run: cd my-app
 
       - name: Install dependencies
-        run: npm install
+        run: npm install --prefix my-app
 
       - name: Run Jest tests
         run: npm test
