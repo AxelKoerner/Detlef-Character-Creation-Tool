@@ -11,6 +11,7 @@ const BackgroundForm: React.FC = () => {
 
   const handleSave = async () => {
     const db = getDatabase();
+    
     const backgroundRef = ref(db, `Background/${backgroundName}/Abilities/${abilityName}`);
     const data = abilityValue;
 
