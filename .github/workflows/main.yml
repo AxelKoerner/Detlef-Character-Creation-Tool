@@ -23,6 +23,9 @@ jobs:
         with:
           node-version: 18
 
+      - name: Change directory
+        run: cd my-app
+
       - name: Install dependencies
         run: npm install
 
