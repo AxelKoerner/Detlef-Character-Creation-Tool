@@ -139,7 +139,7 @@ function Dashboards() {
                     </Paper>
                 </div>
                 {characters.map(([key, value]) => (
-                <div key={key}>
+                <div key={key} data-grid={{ x: 4, y: 0, w: 2, h: 8, minH: 8, minW: 2 }}>
                     <Paper
                     elevation={4}
                     sx={{
@@ -358,6 +358,7 @@ function Dashboards() {
                             >
                                 
                                 <Typography
+                                    variant={'h3'}
                                     color={colors.greenAccent[500]}
                                     sx={{
                                         overflowWrap: "break-word",
