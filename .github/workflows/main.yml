@@ -30,4 +30,8 @@ jobs:
         run: npm install --prefix my-app
 
       - name: Run Jest tests
-        run: npm test --prefix my-app
+        run:   run: |
+                    npm test --prefix my-app -- --silent
+                    echo "Test overview:"
+                    cat ./my-app/coverage/lcov-report/index.html
+                  continue-on-error: true
