@@ -5,13 +5,13 @@ This is a University Project with the goal, to create a fully fledged out websit
 
 ## User Stories
 1) [x] When the User wants to login, he can create an account
-2) [x] If the user wants to log in, he can use the login form, and gain access to our website and his data
-3) [x] If the user wants to log out, he can use the logout form, and logs out of his account
-4) [x] If the user wants to edit his profile, he can navigate to his profile, and edit his user information
+2) [x] When the User wants to input his information, the values are being checked
+3) [x] If the user wants to log in, he can use the login form, and gain access to our website and his data
+4) [x] If the user wants to log out, he can use the logout form, and logs out of his account
+5) [x] If the user wants to edit his profile, he can navigate to his profile, and edit his user information
 6) [x] if the user wants to upload a profile picture, he can input a url and set his profile picture
 7) [x] When User wants to quickly Navigate, he can access the Sidebar, to have easy access to all features
 8) [x] When the user opens the Sidebar, he can see his profile information
-9) [x] When the User wants to input his information, the values are being checked
 10) [x] When the User wants to change the display mode, he can click a button, and change between dark & normal mode
 11) [x] When the User wants to have more space, he can click the sidebar, to collapse it and get more space
 12) [x] When the user wants to change his dashboard layout, he can move and increase or decrease the container
