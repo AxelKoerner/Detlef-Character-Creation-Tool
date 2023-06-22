@@ -359,6 +359,7 @@ const DndCharacterSheet: React.FC = () => {
         set(characterRef, data)
           .then(() => {
             console.log('Data saved successfully!');
+            alert("Character saved successfully")
           })
           .catch((error) => {
             console.error('Error saving data:', error);
