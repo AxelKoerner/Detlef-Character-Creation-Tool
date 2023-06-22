@@ -608,8 +608,7 @@ const DndCharacterSheet: React.FC = () => {
             
             </td>
             <td colSpan={2} style={{ border: '1px solid white' , maxWidth: '600px'}}>
-            
-                
+             
                 <h2>Abilities</h2>
                 <div style={{ height: '600px', overflow: 'auto' }}>
                     <table>    

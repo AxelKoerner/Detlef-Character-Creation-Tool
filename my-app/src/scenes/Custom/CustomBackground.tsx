@@ -11,7 +11,6 @@ const BackgroundForm: React.FC = () => {
 
   const handleSave = async () => {
     const db = getDatabase();
-    
     const backgroundRef = ref(db, `Background/${backgroundName}/Abilities/${abilityName}`);
     const data = abilityValue;
 
@@ -114,44 +113,6 @@ const BackgroundForm: React.FC = () => {
         </tbody>
     </table>
     </div>
-    /*
-    <div>
-      <h2>Background Form</h2>
-      <label>
-        Background Name:
-        <input type="text" value={backgroundName} onChange={(e) => setBackgroundName(e.target.value)} />
-      </label>
-      <br />
-      <label>
-        Ability Name:
-        <input type="text" value={abilityName} onChange={(e) => setAbilityName(e.target.value)} />
-      </label>
-      <br />
-      <label>
-        Ability Value:
-        <input type="text" value={abilityValue} onChange={(e) => setAbilityValue(e.target.value)} />
-      </label>
-      <br />
-      <h3>Equipment:</h3>
-      {equipmentFields.map((field) => (
-        <div key={field.id}>
-          <label>
-            Equipment ID {field.id}:
-            <input
-              type="text"
-              value={field.value}
-              onChange={(e) => handleEquipmentFieldChange(field.id, e.target.value)}
-            />
-          </label>
-          <button onClick={() => handleRemoveEquipmentField(field.id)}>Remove</button>
-          <br />
-        </div>
-      ))}
-      <button onClick={handleAddEquipmentField}>Add Equipment Field</button>
-      <br />
-      <button onClick={handleSave}>Save</button>
-    </div>
-    */
   );
 };
 
