@@ -13,22 +13,23 @@ This is a University Project with the goal, to create a fully fledged out websit
 8) [x] When the user opens the Sidebar, he can see his profile information
 9) [x] When the User wants to input his information, the values are being checked
 10) [x] When the User wants to change the display mode, he can click a button, and change between dark & normal mode
-11) [x] When the User wants to have more space, he can click the sidebar, to collapse it and get more space 
+11) [x] When the User wants to have more space, he can click the sidebar, to collapse it and get more space
+12) [x] When the user wants to change his dashboard layout, he can move and increase or decrease the container
 
-12) [x] When User wants to create a custom racial lineage, he can access a Editor, to create a new custom racial lineage
-13) [x] When User wants to create a custom background, he can access a Editor, to create a new Background
-14) [x] When the user wants to create his character , he can acces a Character-editor
+13) [x] When User wants to create a custom racial lineage, he can access a Editor, to create a new custom racial lineage
+14) [x] When User wants to create a custom background, he can access a Editor, to create a new Background
+15) [x] When the user wants to create his character , he can acces a Character-editor
 
-15) [x] When the user wants to define his character, he set a characterName
-16) [x] When the user wants to define his character, he can input a custom ability score
-17) [x] When the user wants to define his character, he can choose a Class, automatically updating his abilities and proficiencies
-18) [x] When the user wants to define his character, he can choose a Lineage automatically updating his abilities
-19) [x] When the user wants to define his character, he can choose a starting Level, granting access to further abilities of the chosen class
-20) [x] When the user wants to define his character, he can choose his Skills
-21) [x] When the user wants to define his character, he can choose a Background, automatically updating his abilities and equipment
+16) [x] When the user wants to define his character, he set a characterName
+17) [x] When the user wants to define his character, he can input a custom ability score
+18) [x] When the user wants to define his character, he can choose a Class, automatically updating his abilities and proficiencies
+19) [x] When the user wants to define his character, he can choose a Lineage automatically updating his abilities
+20) [x] When the user wants to define his character, he can choose a starting Level, granting access to further abilities of the chosen class
+21) [x] When the user wants to define his character, he can choose his Skills
+22) [x] When the user wants to define his character, he can choose a Background, automatically updating his abilities and equipment
 
-22) [x] When User wants to save the character for future use, he can access a save button, to create a new character file
-23) [x] When the user wants to look at his character, he can select display Character Sheet, to view the saved Character
+23) [x] When User wants to save the character for future use, he can access a save button, to create a new character file
+24) [x] When the user wants to look at his character, he can select display Character Sheet, to view the saved Character
 
 
 TODO:
