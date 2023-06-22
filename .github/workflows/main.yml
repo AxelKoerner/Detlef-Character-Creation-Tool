@@ -31,7 +31,7 @@ jobs:
 
       - name: Run Jest tests
         run: |
-              npm test --prefix my-app -- --silent
-              echo "Test overview:"
-              cat ./my-app/coverage/lcov-report/index.html
-            continue-on-error: true
+          npm --prefix my-app test -- --silent
+          echo "Test overview:"
+          cat ./my-app/coverage/lcov-report/index.html
+        continue-on-error: true
