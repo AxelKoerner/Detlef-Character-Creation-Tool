@@ -19,6 +19,7 @@ import wizardImage from '../../assets/ClassIcon_Wizard.jpg';
 import { forEach } from 'lodash';
 
 
+
 const CharacterSheet: React.FC = () => {
     
   const [characterName, setCharacterName] = useState('testName');
