@@ -13,7 +13,6 @@ import CustomBackground from './scenes/Custom/CustomBackground';
 import CustomLineage from './scenes/Custom/CustomLineage';
 import CharacterDisplaySheet from './scenes/CharacterSheet/CharacterDisplaySheet';
 import SideBar from "./scenes/global/SideBar";
-import CharacterSheet1 from './scenes/CharacterSheet/characterSheet1';
 
 function App() {
     const [theme, colorMode] = useMode();
@@ -37,7 +36,6 @@ function App() {
                                 <Route path="/customBackground" element={<CustomBackground/>}/>
                                 <Route path="/customLineage" element={<CustomLineage/>}/>
                                 <Route path="/characterDisplaySheet" element={<CharacterDisplaySheet/>}/>
-                                <Route path="/characterSheet1" element={<CharacterSheet1/>}/>
                             </Routes>
 
                     </main>
