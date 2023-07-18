@@ -180,8 +180,9 @@ const CustomBackground = () => {
                                         </Grid>
                                     </Grid>
 
-                                    <Grid container>
-                                        <Grid item xs={5} sx={{mt: 6, ml: 25}}>
+                                    <Grid container direction="column"
+                                          justifyContent="center">
+                                        <Grid item xs={6} sx={{mt: 6, ml: 15, mr: 15}}>
                                             <Button
                                                 variant={"contained"}
                                                 fullWidth
